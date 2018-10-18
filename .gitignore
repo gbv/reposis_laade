@@ -1,10 +1,16 @@
+# MyCoRe files
+jwt.secret
+*.resolved.properties
+*.active.properties
+mycore.properties
+resources/META-INF/persistence.xml
+
 .class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
