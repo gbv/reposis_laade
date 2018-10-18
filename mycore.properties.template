@@ -1,7 +1,7 @@
 #
 # by Kathleen.Neumann@gbv.de
 #
-# created 2018-09-06
+# created 2018-10-18
 #
 
 ##############################################################################
@@ -10,12 +10,12 @@
 #                                                                            #
 ##############################################################################
 
-# name of project - leopoldina
-  MCR.NameOfProject=leopoldina
-  MIR.projectid.default=leopoldina
+# name of project - laade
+  MCR.NameOfProject=laade
+  MIR.projectid.default=laade
 
 # application base URL
-# MCR.baseurl=https://publications.leopoldina.org/
+# MCR.baseurl=https://publications.laade.org/
 
 # supported languages
   MCR.Metadata.Languages=de,en
@@ -23,17 +23,17 @@
 # SOLR-URL
 # MCR.Solr.ServerURL=http://esx-127.gbv.de:8983/
   MCR.Solr.ServerURL=http://esx-91.gbv.de:8983/
-  MCR.Solr.Core.main.Name=leopoldina
-  MCR.Solr.Core.classification.Name=leopoldina_class
+  MCR.Solr.Core.main.Name=laade_main
+  MCR.Solr.Core.classification.Name=laade_class
   MCR.Solr.Indexer.ThreadCount=1
 
 # Datadirecotry
-  MCR.datadir=/mcr/leopoldina/data
-  MCR.Save.FileSystem=/mcr/leopoldina/.mycore/leopoldina/save
+  MCR.datadir=/mcr/laade/data
+  MCR.Save.FileSystem=/mcr/laade/.mycore/laade/save
 
 # Layout
-  MIR.CustomLayout.CSS=leopoldina.css
-  MIR.CustomLayout.JS=leopoldina.js
+  MIR.CustomLayout.CSS=laade.css
+  MIR.CustomLayout.JS=laade.js
 
 # Set PIWIK-ID in mycore.properties for productive to xx, default is 0 (no tracking)
 # piwikID=xx
@@ -41,6 +41,8 @@
 # this is a productive environment
   MIR.testEnvironment=false
 
+# enable sass live time changes
+  MCR.SASS.DeveloperMode = true
 
 ##############################################################################
 #                                                                            #
@@ -83,7 +85,7 @@
 # Editor Mail adresses for Messages add1@serv1,add2@serv2,...
   MCR.Mail.Address=
   MCR.mir-module.EditorMail=Editor KNN <neumann@gbv.de>
-  MCR.mir-module.MailSender=Leopoldina <dms-list@lists.gbv.de>
+  MCR.mir-module.MailSender=Laade <dms-list@lists.gbv.de>
 
 #  MCR.mir-module.EditorMail=xxx
 #  MCR.mir-module.MailSender=xxx
@@ -94,4 +96,3 @@
 ##############################################################################
 # Set mcr_error properties in your mycore.properties.private to show OA error page without StackTrace
 #  MCR.ContentTransformer.mcr_error.Stylesheet=xsl/errorPage.xsl,%MCR.LayoutTransformerFactory.Default.Stylesheets%
-
