@@ -19,11 +19,8 @@
         </nav>
       </div>
       <div id="project_logo_box">
-        <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
-           class="">
-          <span id="logo_mir">mir</span>
-          <span id="logo_modul">mycore</span>
-          <span id="logo_slogan">mods institutional repository</span>
+        <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}" class="">
+          <img src="{$WebApplicationBaseURL}images/logos/CWM_Logo_rgb_gruen-1.jpg" alt="{i18n:translate('laade.logoCenterForWorldmusic')}" />
         </a>
       </div>
     </div>
@@ -84,51 +81,31 @@
 
   <xsl:template name="mir.jumbotwo">
     <!-- show only on startpage -->
-    <xsl:if test="//div/@class='jumbotwo'">
+    <!-- xsl:if test="//div/@class='jumbotwo'">
       <div class="jumbotron">
         <div class="container">
           <h1>Mit MIR wird alles gut!</h1>
           <h2>your repository - just out of the box</h2>
         </div>
       </div>
-    </xsl:if>
+    </xsl:if -->
   </xsl:template>
 
   <xsl:template name="mir.footer">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <h4>Über uns</h4>
-          <p>
-            MIR ein klassicher institutioneller Publikations- bzw.
-            Dokumentenserver. Es basiert auf dem Repository-Framework
-            MyCoRe und dem Metadata Object Description Schema (MODS).
-            <span class="read_more">
-              <a href="http://mycore.de/generated/mir/">Mehr erfahren ...</a>
-            </span>
-          </p>
-        </div>
-        <div class="col-xs-6 col-sm-3 col-md-2">
-          <h4>Navigation</h4>
-          <ul class="internal_links">
-            <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='brand']/*" />
+        <div class="col-xs-6 col-sm-9">
+          <ul class="internal_links nav navbar-nav">
+            <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='below']/*" />
           </ul>
         </div>
-        <div class="col-xs-6 col-sm-3 col-md-2">
-          <h4>Netzwerke</h4>
-          <ul class="social_links">
-            <li><a href="#"><button type="button" class="social_icons social_icon_fb"></button>Facebook</a></li>
-            <li><a href="#"><button type="button" class="social_icons social_icon_tw"></button>Twitter</a></li>
-            <li><a href="#"><button type="button" class="social_icons social_icon_gg"></button>Google+</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-6 col-sm-3 col-md-2">
-          <h4>Layout based on</h4>
-          <ul class="internal_links">
-            <li><a href="{$WebApplicationBaseURL}mir-layout/template/flatmir.xml">flatmir</a></li>
-            <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
-            <li><a href="http://bootswatch.com/">Bootswatch</a></li>
-          </ul>
+        <div class="col-xs-6 col-sm-3">
+          <xsl:variable name="mcr_version" select="concat('MyCoRe ',mcrver:getCompleteVersion())" />
+          <div id="powered_by">
+            <a id="mycore_logo" href="http://www.mycore.de">
+              <img src="{$WebApplicationBaseURL}mir-layout/images/mycore_logo_small_invert.png" title="{$mcr_version}" alt="powered by MyCoRe" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

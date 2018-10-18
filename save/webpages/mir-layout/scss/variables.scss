@@ -1,47 +1,51 @@
-//
-// Variables
+// --------------------------------------------------
+// Fonts
 // --------------------------------------------------
 
-// --------------------------------------------------
-// Reset defaults
-// --------------------------------------------------
+$web-font-path: "https://webfonts.gbv.de/css?family=Roboto:400,700,400italic";
+$font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$web-font-path: "https://webfonts.gbv.de/css?family=Lato:400,700,400italic";
-
+// --------------------------------------------------
 // Brand colors
-// -------------------------
-$brand-success:      #6EBA6B;
-$brand-info:         #4B8FBC;
-$brand-warning:      #F39C12;
+// --------------------------------------------------
+$gray-base: #4d4d4d;
+$gray-dark: #8d8d99;
+$gray: #d0d0d5;
+$gray-light: #ebebed;
+$gray-lighter: #f8f8f9;
+$brand-primary: #116F70;
+$brand-success: #6eba6b;
+$brand-info: #4b8fbc;
+$brand-warning: #f39c12;
+$brand-danger: #e74c3c;
 
-// Links
-// -------------------------
-$link-color:         $brand-info;
-$link-hover-color:   $brand-info;
 
-// Navbar
-// -------------------------
-// inverse
-$navbar-inverse-bg:                         $brand-warning;
-$navbar-inverse-link-hover-bg:              $brand-warning;
-// default
-$navbar-default-link-hover-color:           $brand-warning;
+// --------------------------------------------------
+// Text and link colors
+// --------------------------------------------------
+$text-color: $gray-base;
+$link-color: $brand-primary;
+$link-hover-color: $link-color;
 
-// Pagination
-// -------------------------
-/*
-@pagination-bg:                             @brand-primary;
-@pagination-active-bg:                      darken(@brand-primary, 15%);
-@pagination-hover-bg:                       lighten(@brand-primary, 15%);
-@pagination-disabled-color:                 @gray;
-*/
 
-// Pager
-// -------------------------
-//gray-base:              #000 !default;
-//$gray:                   lighten($gray-base, 33.5%) !default; // #555
-//$pager-disabled-color:                      $gray;
-
-// Forms
-// -------------------------
-//$input-border-focus:                        $brand-primary;
+// --------------------------------------------------
+// Button colors
+// --------------------------------------------------
+$btn-default-color: $gray-base;
+$btn-default-bg: $gray;
+$btn-default-border: $btn-default-bg;
+$btn-primary-color: $gray-lighter;
+$btn-primary-bg: $gray-base;
+$btn-primary-border: $btn-primary-bg;
+$btn-success-color: $gray-lighter;
+$btn-success-bg: $brand-success;
+$btn-success-border: $btn-success-bg;
+$btn-info-color: $gray-lighter;
+$btn-info-bg: $brand-info;
+$btn-info-border: $btn-info-bg;
+$btn-warning-color: $gray-lighter;
+$btn-warning-bg: $brand-warning;
+$btn-warning-border: $btn-warning-bg;
+$btn-danger-color: $gray-lighter;
+$btn-danger-bg: $brand-danger;
+$btn-danger-border: $btn-danger-bg;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MyCoReWebPage>
+  <section xml:lang="de" title="Willkommen auf den Seiten des Laade-Archivs">
+    <div class="jumbotwo">
+      <div class="row">
+        <div class="col-md-9 col-md-offset-2" lang="de">
+          <h1>
+            Wolfgang-Laade-Archiv
+          </h1>
+          <p>
+            Diese Seite befindet sich noch im Aufbau!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section xml:lang="en" title="Welcome to Laade Archive">
+    <div class="jumbotwo">
+      <div class="row">
+        <div class="col-md-9 col-md-offset-2" lang="en">
+          <h1>
+            Wolfgang Laade Archive
+          </h1>
+          <p>
+            this page is coming soon ...
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <meta>
+    <log lastEditor="administrator" date="2018-10-18" time="12:46"/>
+  </meta>
+</MyCoReWebPage>
