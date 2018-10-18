@@ -1,0 +1,97 @@
+#
+# by Kathleen.Neumann@gbv.de
+#
+# created 2018-09-06
+#
+
+##############################################################################
+#                                                                            #
+# basic application configuration                                            #
+#                                                                            #
+##############################################################################
+
+# name of project - leopoldina
+  MCR.NameOfProject=leopoldina
+  MIR.projectid.default=leopoldina
+
+# application base URL
+# MCR.baseurl=https://publications.leopoldina.org/
+
+# supported languages
+  MCR.Metadata.Languages=de,en
+
+# SOLR-URL
+# MCR.Solr.ServerURL=http://esx-127.gbv.de:8983/
+  MCR.Solr.ServerURL=http://esx-91.gbv.de:8983/
+  MCR.Solr.Core.main.Name=leopoldina
+  MCR.Solr.Core.classification.Name=leopoldina_class
+  MCR.Solr.Indexer.ThreadCount=1
+
+# Datadirecotry
+  MCR.datadir=/mcr/leopoldina/data
+  MCR.Save.FileSystem=/mcr/leopoldina/.mycore/leopoldina/save
+
+# Layout
+  MIR.CustomLayout.CSS=leopoldina.css
+  MIR.CustomLayout.JS=leopoldina.js
+
+# Set PIWIK-ID in mycore.properties for productive to xx, default is 0 (no tracking)
+# piwikID=xx
+
+# this is a productive environment
+  MIR.testEnvironment=false
+
+
+##############################################################################
+#                                                                            #
+# Google - ReCaptcha (https://www.google.com/recaptcha)                      #
+# registered for: reposis-test.gbv.de, reposis.gbv.de                        #
+#                                                                            #
+##############################################################################
+
+  MIR.ReCaptcha.secret.key=6LcXrv4SAAAAAA-sdi8gEu8lASMUQxQF0ajuOTUv
+  MIR.ReCaptcha.site.key=6LcXrv4SAAAAAHcQzQOpn1Vj88sxgRqfkjn2BKSw
+
+
+##############################################################################
+#                                                                            #
+# Sherpa/Romeo API Key                                                       #
+# http://www.sherpa.ac.uk/romeo/api29.php?ak=                                #
+#                                                                            #
+##############################################################################
+
+# key registered for xxx
+#  MCR.Mods.SherpaRomeo.ApiKey=xxx
+
+
+##############################################################################
+#                                                                            #
+# Generic mail configuration for MCRMailer                                   #
+#                                                                            #
+##############################################################################
+
+# The server for outgoing mails
+  MCR.Mail.Server=mailer.gbv.de
+# The mail protocol
+  MCR.Mail.Protocol=smtp
+# The debug option
+  MCR.Mail.Debug=false
+# Encoding for the mail
+  MCR.Mail.Encoding=UTF-8
+# Number of send tries
+  MCR.Mail.NumTries=1
+# Editor Mail adresses for Messages add1@serv1,add2@serv2,...
+  MCR.Mail.Address=
+  MCR.mir-module.EditorMail=Editor KNN <neumann@gbv.de>
+  MCR.mir-module.MailSender=Leopoldina <dms-list@lists.gbv.de>
+
+#  MCR.mir-module.EditorMail=xxx
+#  MCR.mir-module.MailSender=xxx
+
+
+##############################################################################
+# Error Page                                                                 #
+##############################################################################
+# Set mcr_error properties in your mycore.properties.private to show OA error page without StackTrace
+#  MCR.ContentTransformer.mcr_error.Stylesheet=xsl/errorPage.xsl,%MCR.LayoutTransformerFactory.Default.Stylesheets%
+
