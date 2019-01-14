@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>mycore-parent</artifactId>
+    <groupId>org.mycore</groupId>
+    <version>38</version>
+  </parent>
+  <groupId>de.vzg.reposis</groupId>
+  <artifactId>laade</artifactId>
+  <version>2018.06.0.3-SNAPSHOT</version>
+  <name>Laade Archiv Module</name>
+  <dependencies>
+    <dependency>
+      <groupId>org.mycore</groupId>
+      <artifactId>mycore-base</artifactId>
+      <version>2018.06.0.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mycore</groupId>
+      <artifactId>mycore-mods</artifactId>
+      <version>2018.06.0.3-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <MCR-Artifact-Id>${project.artifactId}</MCR-Artifact-Id>
+              <MCR-Application-Module>${project.name}</MCR-Application-Module>
+              <Priority>99</Priority>
+              <MCR-Auto-Deploy>true</MCR-Auto-Deploy>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
