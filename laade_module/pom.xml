@@ -10,7 +10,7 @@
   </parent>
   <groupId>de.vzg.reposis</groupId>
   <artifactId>laade</artifactId>
-  <version>2018.06.0.3-SNAPSHOT</version>
+  <version>2018.11</version>
   <name>Laade Archiv Module</name>
   <dependencies>
     <dependency>

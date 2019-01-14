@@ -151,7 +151,7 @@
             <xsl:choose>
               <xsl:when test="string-length($role)=0"></xsl:when>
               <xsl:when test="$pica2MARC/code[mapping/@from=$role]">
-                <xsl:value-of select="$pica2MARC/code[mapping/@from=$role]/@name" />
+                <xsl:value-of select="$pica2MARC/code[mapping/@from=$role]/@name"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:message>Unknown person type found:
@@ -168,53 +168,56 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="picaNode" select="."/>
-    <xsl:for-each select="distinct-values(tokenize($roles, ','))">
-      <mods:name type="personal">
-        <mods:role>
-          <mods:roleTerm authority="marcrelator" type="code">
-            <xsl:value-of select="."/>
-          </mods:roleTerm>
-        </mods:role>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='0'])">
-          <mods:nameIdentifier>
-            <xsl:attribute name="type">
-              <xsl:value-of select="substring-before(., '/')"/>
-            </xsl:attribute>
-            <xsl:value-of select="substring-after(., '/')"/>
-          </mods:nameIdentifier>
+    <mods:name type="personal">
+      <mods:role>
+        <xsl:for-each select="distinct-values(tokenize($roles, ','))">
+          <xsl:if test="not(.='ctb' and count(distinct-values(tokenize($roles, ',')))&gt;1)">
+            <mods:roleTerm authority="marcrelator" type="code">
+              <xsl:value-of select="."/>
+            </mods:roleTerm>
+          </xsl:if>
         </xsl:for-each>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='a'])">
-          <mods:namePart type="family">
-            <xsl:value-of select="."/>
-          </mods:namePart>
-        </xsl:for-each>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='d'])">
-          <mods:namePart type="given">
-            <xsl:value-of select="."/>
-          </mods:namePart>
-        </xsl:for-each>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='P'])">
-          <mods:namePart>
-            <xsl:value-of select="."/>
-          </mods:namePart>
-        </xsl:for-each>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='n'])">
-          <mods:namePart type="termsOfAddress">
-            <xsl:value-of select="."/>
-          </mods:namePart>
-        </xsl:for-each>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='l'])">
-          <mods:namePart type="termsOfAddress">
-            <xsl:value-of select="."/>
-          </mods:namePart>
-        </xsl:for-each>
-        <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='p'])">
-          <mods:affiliation>
-            <xsl:value-of select="."/>
-          </mods:affiliation>
-        </xsl:for-each>
-      </mods:name>
-    </xsl:for-each>
+      </mods:role>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='0'])">
+        <mods:nameIdentifier>
+          <xsl:attribute name="type">
+            <xsl:value-of select="substring-before(., '/')"/>
+          </xsl:attribute>
+          <xsl:value-of select="substring-after(., '/')"/>
+        </mods:nameIdentifier>
+      </xsl:for-each>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='a'])">
+        <mods:namePart type="family">
+          <xsl:value-of select="."/>
+        </mods:namePart>
+      </xsl:for-each>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='d'])">
+        <mods:namePart type="given">
+          <xsl:value-of select="."/>
+        </mods:namePart>
+      </xsl:for-each>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='P'])">
+        <mods:namePart>
+          <xsl:value-of select="."/>
+        </mods:namePart>
+      </xsl:for-each>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='n'])">
+        <mods:namePart type="termsOfAddress">
+          <xsl:value-of select="."/>
+        </mods:namePart>
+      </xsl:for-each>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='l'])">
+        <mods:namePart type="termsOfAddress">
+          <xsl:value-of select="."/>
+        </mods:namePart>
+      </xsl:for-each>
+      <xsl:for-each select="distinct-values($picaNode/pica:subfield[@code='p'])">
+        <mods:affiliation>
+          <xsl:value-of select="."/>
+        </mods:affiliation>
+      </xsl:for-each>
+    </mods:name>
+
   </xsl:template>
 
   <!-- shelfLocator -->
@@ -303,7 +306,7 @@
       <mapping from="regisseur"/>
       <mapping from="regisseurin"/>
       <mapping from="regie"/>
-      <mapping from="dir." />
+      <mapping from="dir."/>
     </code>
     <code name="rce">
       <mapping from="engineer"/>
