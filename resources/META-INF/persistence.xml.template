@@ -12,7 +12,7 @@
     <mapping-file>META-INF/mir-module-mappings.xml</mapping-file>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://zelda.gbv.de:5432/reposis-test" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://esx-44.gbv.de:5432/reposis-test" />
       <property name="javax.persistence.jdbc.user" value="P2721" />
       <property name="javax.persistence.jdbc.password" value="xxxxx" />
       <property name="hibernate.default_schema" value="laade"/>
