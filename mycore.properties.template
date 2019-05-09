@@ -96,3 +96,17 @@
 ##############################################################################
 # Set mcr_error properties in your mycore.properties.private to show OA error page without StackTrace
 #  MCR.ContentTransformer.mcr_error.Stylesheet=xsl/errorPage.xsl,%MCR.LayoutTransformerFactory.Default.Stylesheets%
+
+##############################################################################
+# DOI                                                                        #
+##############################################################################
+MCR.PI.Generator.LaadeDOI=org.mycore.mir.laade.MIRLaadeDOIGenerator
+
+MCR.PI.Service.Datacite=org.mycore.pi.doi.MCRDOIService
+MCR.PI.Service.Datacite.MetadataService=MODSDOI
+MCR.PI.Service.Datacite.Generator=LaadeDOI
+MCR.PI.Service.Datacite.RegisterBaseURL=https://cwm-archiv.gbv.de
+MCR.PI.Service.Datacite.Username=
+MCR.PI.Service.Datacite.Password=
+MCR.PI.Service.Datacite.Transformer=datacite
+MCR.PI.Service.Datacite.JobApiUser=datacitejob

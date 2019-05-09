@@ -14,6 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -31,6 +32,8 @@ import org.mycore.common.config.MCRConfiguration;
 import org.mycore.common.content.MCRContent;
 import org.mycore.common.content.MCRURLContent;
 import org.mycore.common.content.transformer.MCRXSLTransformer;
+import org.mycore.datamodel.common.MCRActiveLinkException;
+import org.mycore.datamodel.metadata.MCRBase;
 import org.mycore.datamodel.metadata.MCRDerivate;
 import org.mycore.datamodel.metadata.MCRMetaIFS;
 import org.mycore.datamodel.metadata.MCRMetaLinkID;
@@ -42,6 +45,10 @@ import org.mycore.datamodel.niofs.utils.MCRFileCollectingFileVisitor;
 import org.mycore.frontend.cli.annotation.MCRCommand;
 import org.mycore.frontend.cli.annotation.MCRCommandGroup;
 import org.mycore.mods.MCRMODSWrapper;
+import org.mycore.pi.MCRPIService;
+import org.mycore.pi.MCRPIServiceManager;
+import org.mycore.pi.MCRPersistentIdentifier;
+import org.mycore.pi.exceptions.MCRPersistentIdentifierException;
 import org.xml.sax.SAXException;
 
 @MCRCommandGroup(
@@ -203,6 +210,28 @@ public class MIRLaadeImport {
                 }
             });
         }
+    }
+
+    @MCRCommand(syntax = "create doi for object {0}")
+    public static void createDOIForObjectIfNotExist(String objectIDString)
+        throws MCRAccessException, ExecutionException, MCRActiveLinkException, MCRPersistentIdentifierException,
+        InterruptedException {
+        final MCRObjectID objectID = MCRObjectID.getInstance(objectIDString);
+
+        if (!MCRMetadataManager.exists(objectID)) {
+            LOGGER.error("Object {} does not exist!", objectID);
+            return;
+        }
+
+        MCRPIService<MCRPersistentIdentifier> registrationService = MCRPIServiceManager
+            .getInstance().getRegistrationService("Datacite");
+
+        if (registrationService.isCreated(objectID, "")) {
+            LOGGER.info("Object {} already has a DOI!", objectID);
+        }
+        final MCRBase object = MCRMetadataManager.retrieve(objectID);
+        final MCRPersistentIdentifier doi = registrationService.register(object, "");
+        LOGGER.info("Registered doi: {} for object {}", doi.asString(), objectID);
     }
 
     private static String mapSignature(String old) {
