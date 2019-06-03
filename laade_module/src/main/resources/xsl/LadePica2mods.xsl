@@ -97,11 +97,11 @@
   <!-- Ort und Verlag -->
   <xsl:template match="pica:datafield[@tag='033A']">
     <xsl:if test="count(pica:subfield[@code='p' or @code='n'])&gt;0">
-      <mods:originInfo>
+      <mods:originInfo eventType="publication">
         <xsl:for-each select="distinct-values(pica:subfield[@code='p'])">
-          <mods:place>
+          <mods:placeTerm type="text">
             <xsl:value-of select="."/>
-          </mods:place>
+          </mods:placeTerm>
         </xsl:for-each>
         <xsl:for-each select="distinct-values(pica:subfield[@code='n'])">
           <mods:publisher>

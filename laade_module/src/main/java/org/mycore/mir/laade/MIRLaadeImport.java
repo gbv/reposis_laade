@@ -32,6 +32,7 @@ import org.mycore.common.config.MCRConfiguration;
 import org.mycore.common.content.MCRContent;
 import org.mycore.common.content.MCRURLContent;
 import org.mycore.common.content.transformer.MCRXSLTransformer;
+import org.mycore.datamodel.classifications2.MCRCategoryID;
 import org.mycore.datamodel.common.MCRActiveLinkException;
 import org.mycore.datamodel.metadata.MCRBase;
 import org.mycore.datamodel.metadata.MCRDerivate;
@@ -78,6 +79,7 @@ public class MIRLaadeImport {
                 final MCRContent resultingMods = transformer.transform(pica);
                 final Document modsDocument = resultingMods.asXML();
                 final MCRObject mcrObject = MCRMODSWrapper.wrapMODSDocument(modsDocument.getRootElement(), "laade");
+                mcrObject.getService().setState(new MCRCategoryID("state","published"));
                 MCRObjectID generatedMCRId = MCRObjectID.getInstance(generatedMcrIdString);
                 mcrObject.setId(generatedMCRId);
                 if (MCRMetadataManager.exists(generatedMCRId)) {
