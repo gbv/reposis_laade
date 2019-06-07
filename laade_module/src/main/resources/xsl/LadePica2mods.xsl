@@ -98,7 +98,7 @@
   <xsl:template match="pica:datafield[@tag='033A']">
     <xsl:if test="count(pica:subfield[@code='p' or @code='n'])&gt;0">
       <mods:originInfo eventType="publication">
-        <xsl:if test="count(pica:subfield[@code='p')&gt;0">
+        <xsl:if test="count(pica:subfield[@code='p'])&gt;0">
           <mods:place>
             <xsl:for-each select="distinct-values(pica:subfield[@code='p'])">
               <mods:placeTerm type="text">
