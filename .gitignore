@@ -2,7 +2,7 @@
 jwt.secret
 *.resolved.properties
 *.active.properties
-mycore.properties
+/mycore.properties
 resources/META-INF/persistence.xml
 
 .class
