@@ -30,6 +30,7 @@ import org.jdom2.Namespace;
 import org.mycore.access.MCRAccessException;
 import org.mycore.access.MCRAccessInterface;
 import org.mycore.access.MCRAccessManager;
+import org.mycore.common.MCRConstants;
 import org.mycore.common.MCRException;
 import org.mycore.common.MCRPersistenceException;
 import org.mycore.common.config.MCRConfiguration;
@@ -135,9 +136,23 @@ public class MIRLaadeImport {
             BasicFileAttributes attr = Files.readAttributes(contentPath, BasicFileAttributes.class);
             final String publicationYear = DateTimeFormatter.ofPattern("yyyy")
                 .format(Instant.ofEpochMilli(attr.creationTime().toMillis()).atZone(ZoneId.of("UTC")));
-            new MCRMODSWrapper(mcrObject)
-                .getElement("mods:originInfo[@eventType='publication']/mods:dateIssued[@encoding='w3cdtf']")
-                .setText(publicationYear);
+            final MCRMODSWrapper wrapper = new MCRMODSWrapper(mcrObject);
+            Element originInfo = wrapper.getElement("mods:originInfo[@eventType='publication']");
+            if (originInfo == null) {
+                originInfo = new Element("originInfo", MCRConstants.MODS_NAMESPACE);
+                originInfo.setAttribute("eventType", "publication");
+                wrapper.addElement(originInfo);
+            }
+
+            Element dateIssued = wrapper
+                .getElement("mods:originInfo[@eventType='publication']/mods:dateIssued[@encoding='w3cdtf']");
+            if (dateIssued == null) {
+                dateIssued = new Element("dateIssued", MCRConstants.MODS_NAMESPACE);
+                dateIssued.setAttribute("encoding", "w3cdtf");
+                originInfo.addContent(dateIssued);
+            }
+
+            dateIssued.setText(publicationYear);
         }
     }
 
