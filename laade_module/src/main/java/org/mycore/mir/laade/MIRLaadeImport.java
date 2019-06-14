@@ -111,7 +111,7 @@ public class MIRLaadeImport {
 
     private static void addPublicationDateFromFiles(String signature, String onlineFolder, MCRObject mcrObject)
         throws IOException {
-        String[] parts = signature.split("_");
+        String[] parts = signature.split(" ");
         if (parts.length != 3) {
             throw new MCRException("Invalid Signature!");
         }
