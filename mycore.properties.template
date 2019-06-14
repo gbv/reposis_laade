@@ -101,6 +101,7 @@
 # DOI                                                                        #
 ##############################################################################
 MCR.PI.Generator.LaadeDOI=org.mycore.mir.laade.MIRLaadeDOIGenerator
+MCR.DOI.HostingInstitution=Center for World Music
 
 MCR.PI.Service.Datacite=org.mycore.pi.doi.MCRDOIService
 MCR.PI.Service.Datacite.MetadataService=MODSDOI

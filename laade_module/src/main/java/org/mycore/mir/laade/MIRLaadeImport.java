@@ -7,7 +7,11 @@ import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.NumberFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -79,6 +83,9 @@ public class MIRLaadeImport {
                 final MCRContent resultingMods = transformer.transform(pica);
                 final Document modsDocument = resultingMods.asXML();
                 final MCRObject mcrObject = MCRMODSWrapper.wrapMODSDocument(modsDocument.getRootElement(), "laade");
+
+                addPublicationDateFromFiles(signature, onlineFolder, mcrObject);
+
                 mcrObject.getService().setState(new MCRCategoryID("state","published"));
                 MCRObjectID generatedMCRId = MCRObjectID.getInstance(generatedMcrIdString);
                 mcrObject.setId(generatedMCRId);
@@ -99,6 +106,38 @@ public class MIRLaadeImport {
             throw new MCRException("Error while creating JDOM!", e);
         } catch (MCRAccessException e) {
             throw new MCRException("Error while creating MCRObject!", e);
+        }
+    }
+
+    private static void addPublicationDateFromFiles(String signature, String onlineFolder, MCRObject mcrObject)
+        throws IOException {
+        String[] parts = signature.split("_");
+        if (parts.length != 3) {
+            throw new MCRException("Invalid Signature!");
+        }
+        int fromNumber = Integer.parseInt(parts[2].split("-")[0]);
+
+        double base = Math.floor((double) Math.abs(fromNumber - 1) / 1000.0);
+        NumberFormat format = NumberFormat.getIntegerInstance(Locale.ROOT);
+        format.setGroupingUsed(false);
+
+        String folder;
+        if (parts[1].equals("CD")) {
+            format.setMinimumIntegerDigits(4);
+            folder = "CD_" + format.format(base * 1000 + 1) + "_" + format.format((base + 1) * 1000);
+        } else {
+            format.setMinimumIntegerDigits(5);
+            folder = format.format(base * 1000 + 1) + "_" + format.format((base + 1) * 1000);
+        }
+        final Path onlineFolderPath = Paths.get(onlineFolder);
+        final Path contentPath = onlineFolderPath.resolve(folder).resolve(mapSignature(signature));
+        if (Files.exists(contentPath) && Files.isDirectory(contentPath)) {
+            BasicFileAttributes attr = Files.readAttributes(contentPath, BasicFileAttributes.class);
+            final String publicationYear = DateTimeFormatter.ofPattern("yyyy")
+                .format(Instant.ofEpochMilli(attr.creationTime().toMillis()).atZone(ZoneId.of("UTC")));
+            new MCRMODSWrapper(mcrObject)
+                .getElement("mods:originInfo[@eventType='publication']/mods:dateIssued[@encoding='w3cdtf']")
+                .setText(publicationYear);
         }
     }
 
