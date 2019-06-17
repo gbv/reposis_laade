@@ -45,6 +45,7 @@
 
   <xsl:template match="pica:record">
     <xsl:variable name="result">
+      <mods:genre type="intern" authorityURI="http://www.mycore.org/classifications/mir_genres" valueURI="http://www.mycore.org/classifications/mir_genres#audio" />
       <xsl:apply-templates/>
     </xsl:variable>
 

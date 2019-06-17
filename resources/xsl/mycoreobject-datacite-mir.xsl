@@ -126,58 +126,7 @@
   <!-- ========== creators (1-n) ========== -->
 
   <xsl:template name="creators">
-    <creators>
-      <xsl:variable name="creatorRoles"
-                    select="$marcrelator/mycoreclass/categories/category[@ID='cre']/descendant-or-self::category"
-                    xmlns=""/>
-      <xsl:apply-templates select="mods:name[$creatorRoles/@ID=mods:role/mods:roleTerm/text()]" mode="creator"/>
-    </creators>
-  </xsl:template>
-
-  <xsl:template mode="creator" match="mods:name">
-    <xsl:choose>
-      <xsl:when test="mods:displayForm or @valueURI">
-        <creator>
-          <creatorName>
-            <xsl:choose>
-              <xsl:when test="mods:displayForm">
-                <xsl:value-of select="mods:displayForm"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:variable name="classlink" select="mcrmods:getClassCategParentLink(.)"/>
-                <xsl:if test="string-length($classlink) &gt; 0">
-                  <xsl:for-each select="document($classlink)/mycoreclass//category[position()=1 or position()=last()]">
-                    <xsl:if test="position() > 1">
-                      <xsl:value-of select="', '"/>
-                    </xsl:if>
-                    <xsl:value-of select="./label[lang($MCR.Metadata.DefaultLang)]/@text"/>
-                  </xsl:for-each>
-                </xsl:if>
-              </xsl:otherwise>
-            </xsl:choose>
-          </creatorName>
-        </creator>
-      </xsl:when>
-      <xsl:when test="mods:namePart">
-        <xsl:variable name="name">
-          <xsl:value-of select="mods:namePart[@type='family']"/>
-          <xsl:if test="mods:namePart[@type='given']">
-            <xsl:value-of select="concat(', ',mods:namePart[@type='given'])"/>
-          </xsl:if>
-          <xsl:if test="mods:namePart[@type='date']">
-            <xsl:value-of select="concat(' (',mods:namePart[@type='date'],')')"/>
-          </xsl:if>
-          <xsl:if test="mods:namePart[not(@type)]">
-            <xsl:value-of select="mods:namePart"/>
-          </xsl:if>
-        </xsl:variable>
-        <creator>
-          <creatorName>
-            <xsl:value-of select="normalize-space($name)"/>
-          </creatorName>
-        </creator>
-      </xsl:when>
-    </xsl:choose>
+    <creators>(:unav)</creators>
   </xsl:template>
 
   <!-- ========== publisher (1) ========== -->
@@ -269,7 +218,7 @@
   <!-- ========== contributors (0-n) ========== -->
   <xsl:template name="contributors">
     <xsl:variable name="contributorRoles"
-                  select="$marcrelator/mycoreclass/categories/category[@ID='ctb']/descendant-or-self::category"
+                  select="$marcrelator/mycoreclass/categories/category[@ID='ctb' or @ID='cre']/descendant-or-self::category"
                   xmlns=""/>
     <contributors>
       <xsl:call-template name="hostingInstitution"/>
@@ -345,6 +294,7 @@
   <xsl:template mode="contributorType" match="mods:roleTerm">
     <xsl:attribute name="contributorType">
       <xsl:choose>
+
         <xsl:when test="text() = 'prc'">
           <xsl:value-of select="'ContactPerson'"/>
         </xsl:when>
