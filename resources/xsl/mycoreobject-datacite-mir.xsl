@@ -126,7 +126,7 @@
   <!-- ========== creators (1-n) ========== -->
 
   <xsl:template name="creators">
-    <creators>(:unav)</creators>
+    <creators><creator><creatorName>(:unav)</creatorName></creator></creators>
   </xsl:template>
 
   <!-- ========== publisher (1) ========== -->
@@ -271,9 +271,7 @@
                 <xsl:value-of select="mods:namePart"/>
               </xsl:if>
             </xsl:variable>
-            <contributorName>
               <xsl:value-of select="normalize-space($name)"/>
-            </contributorName>
           </xsl:when>
           <xsl:otherwise>
             <xsl:variable name="classlink" select="mcrmods:getClassCategParentLink(.)"/>
