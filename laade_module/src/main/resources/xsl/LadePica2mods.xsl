@@ -36,10 +36,7 @@
     </xsl:variable>
 
     <xsl:for-each select="$modsDocs/mods:mods">
-      <xsl:variable name="signatur" select="mods:location/mods:shelfLocator/text()"/>
-      <xsl:if test="starts-with($signatur, 'WLMMA_CD') or starts-with($signatur, 'WLMMA_T')">
         <xsl:copy-of select="."/>
-      </xsl:if>
     </xsl:for-each>
   </xsl:template>
 
