@@ -226,15 +226,6 @@
 
   </xsl:template>
 
-  <!-- shelfLocator does not work!
-  <xsl:template match="pica:datafield[@tag='209A' and pica:subfield/@code='a' and @occurrence='01']">
-    <mods:location>
-      <mods:shelfLocator>
-        <xsl:value-of select="translate(pica:subfield[@code='a'], ' ','_')"/>
-      </mods:shelfLocator>
-    </mods:location>
-  </xsl:template>-->
-
   <xsl:variable name="pica2MARC">
     <code name="asn">
       <mapping from="accociated name"/>
