@@ -85,6 +85,7 @@ public class MIRLaadeImport {
                 final Document modsDocument = resultingMods.asXML();
                 final MCRObject mcrObject = MCRMODSWrapper.wrapMODSDocument(modsDocument.getRootElement(), "laade");
 
+                addSignature(signature, mcrObject);
                 addPublicationDateFromFiles(signature, onlineFolder, mcrObject);
 
                 mcrObject.getService().setState(new MCRCategoryID("state","published"));
@@ -108,6 +109,14 @@ public class MIRLaadeImport {
         } catch (MCRAccessException e) {
             throw new MCRException("Error while creating MCRObject!", e);
         }
+    }
+
+    private static void addSignature(String signature, MCRObject mcrObject) {
+        final Element location = new Element("location", MCRConstants.MODS_NAMESPACE);
+        final Element shelfLocator = new Element("shelfLocator", MCRConstants.MODS_NAMESPACE);
+        shelfLocator.setText(signature.replace(' ', '_'));
+        location.addContent(shelfLocator);
+        new MCRMODSWrapper(mcrObject).addElement(location);
     }
 
     private static void addPublicationDateFromFiles(String signature, String onlineFolder, MCRObject mcrObject)
