@@ -103,11 +103,11 @@
 MCR.PI.Generator.LaadeDOI=org.mycore.mir.laade.MIRLaadeDOIGenerator
 MCR.DOI.HostingInstitution=Center for World Music
 
+MCR.PI.Registration.Datacite.UseTestServer=true
 MCR.PI.Service.Datacite=org.mycore.pi.doi.MCRDOIService
 MCR.PI.Service.Datacite.MetadataService=MODSDOI
 MCR.PI.Service.Datacite.Generator=LaadeDOI
 MCR.PI.Service.Datacite.RegisterBaseURL=https://cwm-archiv.gbv.de
-MCR.PI.Service.Datacite.Username=
-MCR.PI.Service.Datacite.Password=
+MCR.PI.Service.Datacite.Username=xxx
+MCR.PI.Service.Datacite.Password=xxx
 MCR.PI.Service.Datacite.Transformer=datacite
-MCR.PI.Service.Datacite.JobApiUser=datacitejob
