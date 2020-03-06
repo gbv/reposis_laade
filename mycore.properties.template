@@ -15,7 +15,7 @@
   MIR.projectid.default=laade
 
 # application base URL
-# MCR.baseurl=https://publications.laade.org/
+# MCR.baseurl=https://cwm-archiv.gbv.de/
 
 # supported languages
   MCR.Metadata.Languages=de,en
