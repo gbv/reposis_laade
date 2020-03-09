@@ -4,6 +4,8 @@ jwt.secret
 *.active.properties
 /mycore.properties
 resources/META-INF/persistence.xml
+data/
+lib/h2-1.4.196.jar
 
 .class
 
