@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MyCoReWebPage>
+
   <section xml:lang="de" title="Willkommen auf den Seiten des Laade-Archivs">
-    <div class="jumbotwo">
-      <div class="row">
-        <div class="col-md-9 col-md-offset-2" lang="de">
-          <h1>
-            Wolfgang-Laade-Archiv
-          </h1>
-          <p>
-            Diese Seite befindet sich noch im Aufbau!
-          </p>
-        </div>
+    <div class="row">
+      <div class="col-md-9 col-md-offset-2" lang="de">
+        <h2>
+          Center for World Music
+        </h2>
+        <p>
+          Wie leben wir mit Musik? Das Center for World Music der Universität
+          Hildesheim bewahrt bedeutende Spuren und Vermächtnisse weltweiten
+          Musikschaffens: über 4.500 Musikinstrumente, 45.000 Schallplatten,
+          eine der größten Sammlungen Europas. Das Center widmet sich der
+          Vielfalt musikalischer Traditionen und ist ein Archiv und Labor,
+          ein Ort der Forschung und des Studiums, ein Treffpunkt für
+          Musikerinnen und Musiker und eine Basis für internationale
+          Begegnungen und Verständigung.
+        </p>
+        <h2>
+          Musikethnologie heute
+        </h2>
+        <p>
+          Musik ist nicht nur bloße Unterhaltung oder hohe Kunst. Sie ist
+          eine emotionale Kraft. Sie kann Verständigung fördern, aber auch
+          trennend wirken. Musik ist zutiefst gesellschaftlich. Welche Rolle
+          spielen Musik und Klänge in der Gesellschaft? Diese Frage beschäftigt
+          die Musikethnologie. Das Center for World Music verfolgt die Aufgabe,
+          musikethnologisches Wissen für die Gesellschaft nutzbar zu machen –
+          ganz im Sinne einer engagierten Musikethnologie. Durch die enge
+          Verzahnung von Theorie und Praxis, durch die regionalen,
+          internationalen und interdisziplinären Partner sowie durch die vier
+          Arbeitsbereiche Archiv, Forschung, Lehre und Community Service
+          entstehen hervorragende Synergie-Effekte, welche die Arbeit am
+          Center for World Music in Hildesheim auszeichnen.
+        </p>
       </div>
     </div>
   </section>
+
   <section xml:lang="en" title="Welcome to Laade Archive">
-    <div class="jumbotwo">
-      <div class="row">
-        <div class="col-md-9 col-md-offset-2" lang="en">
-          <h1>
-            Wolfgang Laade Archive
-          </h1>
-          <p>
-            this page is coming soon ...
-          </p>
-        </div>
+    <div class="row">
+      <div class="col-md-9 col-md-offset-2" lang="en">
+        <h1>
+          Wolfgang Laade Archive
+        </h1>
+        <p>
+          this page is coming soon ...
+        </p>
       </div>
     </div>
   </section>
+
   <meta>
-    <log lastEditor="administrator" date="2018-10-18" time="12:46"/>
+    <log lastEditor="administrator" date="2020-03-10" time="10:15"/>
   </meta>
+
 </MyCoReWebPage>
