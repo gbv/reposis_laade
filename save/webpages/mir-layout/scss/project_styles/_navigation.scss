@@ -6,7 +6,137 @@
 // set the defaults for all responsive levels here
 // no (xl) media query necessary (desktop first)
 
+.mir-main-nav {
+  background-color: transparent;
+  color: $secondary;
+  box-shadow: none;
+}
 
+.mir-main-nav nav .navbar-nav > li > a {
+  color: $secondary;
+  font-weight: 700;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $primary;
+    background-color: transparent;
+  }
+}
+.mir-prop-nav .navbar-nav > li > a {
+  color: $secondary;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 1.5rem 15px;
+  &:hover,
+  &:focus,
+  &:hover {
+    color: $primary;
+    background-color: transparent;
+  }
+}
+
+.nav-link {
+  padding: 1.5rem 15px;
+}
+
+.lde-logo-box .dropdown-toggle::after {
+  display: block;
+  margin-left: auto;
+  content: "";
+  border-top: 6px solid;
+  border-right: 6px solid transparent;
+  border-bottom: 0;
+  border-left: 6px solid transparent;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 20px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 1rem 0;
+  margin: 0.125rem 0 0;
+  margin-top: 0.125rem;
+  font-size: 1rem;
+  color: #4d4d4d;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0px;
+}
+
+.mir-prop-nav .dropdown-menu,
+.mir-main-nav nav .navbar-nav .dropdown-menu {
+  background-color: white;
+  border-radius: 0px !important;
+  margin-top: 20px !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0px 20px 30px -14px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 20px 30px -14px rgba(0,0,0,1);
+  box-shadow: 0px 20px 30px -14px rgba(0,0,0,1);
+  border: 1px solid #95989a;
+}
+
+.mir-prop-nav .dropdown-menu::before,
+.mir-main-nav nav .navbar-nav .dropdown-menu::before {
+  border: 6px solid #476481;
+  border-top-color: rgb(71, 100, 129);
+  border-right-color: rgb(71, 100, 129);
+  border-bottom-color: rgb(71, 100, 129);
+  border-left-color: rgb(71, 100, 129);
+  border-color: transparent transparent #476481 transparent;
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 16px;
+  top: -20px;
+  border: 10px solid;
+  border-color: transparent transparent white transparent;
+}
+
+.mir-main-nav nav .navbar-nav .dropdown-menu > li > a {
+  color: $primary;
+  background-color: white;
+}
+.mir-main-nav nav .navbar-nav .dropdown-menu > li > a:hover,
+.mir-main-nav nav .navbar-nav .dropdown-menu > li > a:focus {
+  color: white;
+  background-color: $primary;
+}
+
+.mir-main-nav nav .navbar-nav > li.active > a {
+  color: $primary;
+  background-color: white;
+  border-bottom: 0px solid white;
+}
+.mir-main-nav nav .navbar-nav > li.active > a:hover,
+.mir-main-nav nav .navbar-nav > li.active > a:focus {
+  color: $primary;
+  background-color: white;
+  border-bottom: 0px solid white;
+}
+
+.mir-main-nav nav .navbar-nav .dropdown-menu > .active > a {
+  color: $primary;
+  background-color: white;
+}
+
+.mir-main-nav nav .navbar-nav .dropdown-menu > .active > a:hover,
+.mir-main-nav nav .navbar-nav .dropdown-menu > .active > a:focus {
+  color: white;
+  background-color: $primary;
+}
 
 // Large devices (desktops) and below: <= 1200px
 @include media-breakpoint-down(lg) {

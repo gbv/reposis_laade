@@ -3,7 +3,7 @@
 
   <section xml:lang="de" title="Willkommen auf den Seiten des Laade-Archivs">
     <div class="row">
-      <div class="col-md-9 col-md-offset-2" lang="de">
+      <div class="col" lang="de">
         <h2>
           Center for World Music
         </h2>
@@ -40,7 +40,7 @@
 
   <section xml:lang="en" title="Welcome to Laade Archive">
     <div class="row">
-      <div class="col-md-9 col-md-offset-2" lang="en">
+      <div class="col" lang="en">
         <h1>
           Wolfgang Laade Archive
         </h1>
