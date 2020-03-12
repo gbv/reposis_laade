@@ -43,7 +43,7 @@
   display: block;
   margin-left: auto;
   content: "";
-  border-top: 6px solid;
+  border-top: 6px solid $primary;
   border-right: 6px solid transparent;
   border-bottom: 0;
   border-left: 6px solid transparent;
@@ -136,6 +136,30 @@
 .mir-main-nav nav .navbar-nav .dropdown-menu > .active > a:focus {
   color: white;
   background-color: $primary;
+}
+
+.mir-prop-nav .dropdown-menu > li > a {
+  color: $primary;
+}
+
+.mir-prop-nav .dropdown-menu > li > a:hover,
+.mir-prop-nav .dropdown-menu > li > a:focus {
+  color: white;
+  background-color: $primary;
+}
+
+.mir-prop-nav .navbar-nav > li > a strong {
+  font-weight: 700;
+}
+
+.internal_links {
+  .dropdown-item {
+    &:hover,
+    &:focus,
+    &.active {
+      background-color: transparent;
+    }
+  }
 }
 
 // Large devices (desktops) and below: <= 1200px

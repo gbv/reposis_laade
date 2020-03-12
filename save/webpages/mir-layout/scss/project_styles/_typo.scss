@@ -5,7 +5,14 @@
 // set the defaults for all responsive levels here
 // no (xl) media query necessary (desktop first)
 
-
+h2 {
+  font-size: 1.75rem;
+  margin-top: 2.75rem;
+  margin-bottom: 2rem;
+  &:first-child {
+    margin-top: 0;
+  }
+}
 
 // Large devices (desktops) and below: <= 1200px
 @include media-breakpoint-down(lg) {

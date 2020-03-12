@@ -6,7 +6,44 @@
 // set the defaults for all responsive levels here
 // no (xl) media query necessary (desktop first)
 
+.flatmir-footer {
+  margin-top: 6.25rem;
+  background-color: $body-color;
+  border-top: none;
+}
 
+.lde-logo-banner {
+  background-color: #d6d6d6;
+  padding: 2rem 0 1.5rem 0;
+  &__link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &__slogan {
+    color: $primary;
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  &__copyright {
+    color: $body-color;
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+}
+
+.lde-sitemap {
+  padding-top: 7.25rem;
+  padding-bottom: 5.25rem;
+}
+
+#powered_by {
+  background-color: $body-color;
+  border-top: none;
+}
 
 // Large devices (desktops) and below: <= 1200px
 @include media-breakpoint-down(lg) {
