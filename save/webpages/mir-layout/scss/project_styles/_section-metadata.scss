@@ -1,0 +1,73 @@
+/*  section metadata
+ *  - settings for metadata view only
+ */
+
+// Extra large devices (large desktops)
+// set the defaults for all responsive levels here
+// no (xl) media query necessary (desktop first)
+
+.lde-tracks {
+  margin-top: 3rem;
+}
+
+#lde-track-lists .table th {
+  border-top: none;
+}
+
+.lde-player {
+  margin-top: 6rem;
+}
+#waveform {
+  cursor: pointer;
+}
+
+.lde-player-controls {
+  border-top: 1px solid #666;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+.lde-player-button {
+  color: $body-color;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $primary;
+  }
+  i.active {
+    color: $warning;
+  }
+}
+
+.lde-current-track-name {
+  font-weight: 700;
+}
+
+.lde-gallery {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.lde-thumnails {
+  column-count: 4;
+}
+
+// Large devices (desktops) and below: <= 1200px
+@include media-breakpoint-down(lg) {
+  // add/overwrite styles for responsive level lg and lower
+}
+
+// Medium devices (tablets) and below: <= 992px
+@include media-breakpoint-down(md) {
+  // add/overwrite styles for responsive level md and lower
+}
+
+// Small devices (landscape phones) and below: <= 768px
+@include media-breakpoint-down(sm) {
+  // add/overwrite styles for responsive level sm and lower
+}
+
+// Extra small devices (portrait phones): <= 576px
+@include media-breakpoint-down(xs) {
+  // add/overwrite styles for responsive level xs
+}
