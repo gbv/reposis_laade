@@ -128,9 +128,9 @@
 
     <div class="container">
       <div class="row lde-sitemap">
-        <div class="col-2">
+        <div class="col">
           <ul class="internal_links">
-            <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='brand']/*" />
+            <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='brand']/*" mode="footerMenu" />
           </ul>
         </div>
       </div>
