@@ -15,12 +15,12 @@
     <!-- check if sound and cover derivate exists -->
     <xsl:if test="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound'] and
       mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='cover']">
-      
+
       <xsl:variable name="cover_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/@xlink:href" />
       <xsl:variable name="sound_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
-      
+
       <xsl:choose>
-        <xsl:when test="key('rights', mycoreobject/@ID)/@read or ( key('rights', $cover_derivid)/@accKeyEnabled and key('rights', $sound_derivid)/@accKeyEnabled )">
+        <xsl:when test="key('rights', $cover_derivid)/@read and key('rights', $sound_derivid)/@read">
           
           <xsl:variable name="cover_der_uri" select="concat('ifs:',$cover_derivid,'/')" />
           <xsl:variable name="cover_der_xml" select="document($cover_der_uri)/mcr_directory/children" />
@@ -85,7 +85,7 @@
 
                         <xsl:for-each select="$sound_der_xml/child[contains(name,'_A_')]">
                           <tr>
-                            <th scope="row">1</th>
+                            <th scope="row"><xsl:value-of select="position()"/></th>
                             <td>
                               <a href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}" data-track-name="{name}" class="lde-js-play-track">
                                 <i class="far fa-play-circle"></i>
@@ -121,7 +121,7 @@
   
                         <xsl:for-each select="$sound_der_xml/child[contains(name,'_B_')]">
                           <tr>
-                            <th scope="row">1</th>
+                            <th scope="row"><xsl:value-of select="position()"/></th>
                             <td>
                               <a href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}" data-track-name="{name}" class="lde-js-play-track">
                                 <i class="far fa-play-circle"></i>

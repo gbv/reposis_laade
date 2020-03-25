@@ -18,7 +18,7 @@
       <xsl:variable name="cover_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/@xlink:href" />
       
       <xsl:choose>
-        <xsl:when test="key('rights', mycoreobject/@ID)/@read or key('rights', $cover_derivid)/@accKeyEnabled">
+        <xsl:when test="key('rights', $cover_derivid)/@read">
 
           <xsl:variable name="ziplink" select="concat($ServletsBaseURL,'MCRZipServlet',$JSessionID,'?id=',$cover_derivid)" />
           <xsl:variable name="suburi" select="concat('ifs:',$cover_derivid,'/')" />

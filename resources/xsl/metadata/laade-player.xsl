@@ -18,7 +18,7 @@
       <xsl:variable name="sound_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
       
       <xsl:choose>
-        <xsl:when test="key('rights', mycoreobject/@ID)/@read or key('rights', $sound_derivid)/@accKeyEnabled">
+        <xsl:when test="key('rights', $sound_derivid)/@read">
 
   
           <div id="laade-player">
@@ -76,7 +76,7 @@
                     </a>
                   </div>
                   <div class="col text-center">
-                    <xsl:variable name="sound_maindoc" select="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound']/maindoc" />
+                    <xsl:variable name="sound_maindoc" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/maindoc" />
                     <span class="lde-current-track-name" data-ini-track="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{$sound_maindoc}"><xsl:value-of select="$sound_maindoc"/></span>
                   </div>
                   <div class="col-auto text-right">
