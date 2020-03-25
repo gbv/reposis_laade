@@ -27,7 +27,16 @@
           <xsl:variable name="sound_der_uri" select="concat('ifs:',$sound_derivid,'/')" />
           <xsl:variable name="sound_der_xml" select="document($sound_der_uri)/mcr_directory/children" />
           
-          <xsl:variable name="cover_A_filename" select="$cover_der_xml/child[contains(name, '001_cov')]/name" />
+          <xsl:variable name="cover_A_filename">
+            <xsl:choose>
+              <xsl:when test="$cover_der_xml/child[contains(name, '001_cov')]/name">
+                <xsl:value-of select="$cover_der_xml/child[contains(name, '001_cov')]/name" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/maindoc"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
           <xsl:variable name="cover_B_filename" select="$cover_der_xml/child[contains(name, '002_cov')]/name" />
           
           <xsl:variable name="sound_ziplink" select="concat($ServletsBaseURL,'MCRZipServlet',$JSessionID,'?id=',$sound_derivid)" />
@@ -38,10 +47,10 @@
             <div class="row lde-tracks">
               <div class="col-6">
                 <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_A_filename}" class="lde-currend-side-cover lde-currend-side-cover-1">
-                  <img src="{$ServletsBaseURL}MCRFileNodeServlet/{$cover_derivid}/{$cover_A_filename}" class="img-fluid" alt="..." />
+                  <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_A_filename}" class="img-fluid" alt="..." />
                 </a>
                 <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_B_filename}" class="lde-currend-side-cover d-none lde-currend-side-cover-2">
-                  <img src="{$ServletsBaseURL}MCRFileNodeServlet/{$cover_derivid}/{$cover_B_filename}" class="img-fluid" alt="..." />
+                  <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_B_filename}" class="img-fluid" alt="..." />
                 </a>
               </div>
               <div class="col-6">

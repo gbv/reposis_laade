@@ -44,7 +44,7 @@
                     <xsl:for-each select="document($suburi)/mcr_directory/children/child">
                       <div class="card">
                         <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{name}">
-                          <img src="{$ServletsBaseURL}MCRFileNodeServlet/{$cover_derivid}/{name}" class="card-img-top" alt="..." />
+                          <img src="{$ServletsBaseURL}MCRTileCombineServlet/MIN/{$cover_derivid}/{name}" class="card-img-top" alt="..." />
                         </a>
                       </div>
                     </xsl:for-each>

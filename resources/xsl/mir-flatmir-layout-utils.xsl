@@ -130,7 +130,7 @@
       <div class="row lde-sitemap">
         <div class="col">
           <ul class="internal_links">
-            <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='brand']/*" mode="footerMenu" />
+            <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='below']/*" mode="footerMenu" />
           </ul>
         </div>
       </div>
