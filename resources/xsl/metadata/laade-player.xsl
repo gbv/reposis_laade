@@ -76,7 +76,8 @@
                     </a>
                   </div>
                   <div class="col text-center">
-                    <span class="lde-current-track-name"><xsl:value-of select="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound']/maindoc"/></span>
+                    <xsl:variable name="sound_maindoc" select="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound']/maindoc" />
+                    <span class="lde-current-track-name" data-ini-track="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{$sound_maindoc}"><xsl:value-of select="$sound_maindoc"/></span>
                   </div>
                   <div class="col-auto text-right">
                     <a href="#" class="lde-player-button lde-js-button-mute" title="Mute">

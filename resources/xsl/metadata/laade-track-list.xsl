@@ -20,15 +20,15 @@
       <xsl:variable name="sound_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
       
       <xsl:choose>
-        <xsl:when test="key('rights', mycoreobject/@ID)/@read or ( key('rights', $cover_derivid)/@accKeyEnabled and (key('rights', $sound_derivid)/@accKeyEnabled)">
+        <xsl:when test="key('rights', mycoreobject/@ID)/@read or ( key('rights', $cover_derivid)/@accKeyEnabled and key('rights', $sound_derivid)/@accKeyEnabled )">
           
           <xsl:variable name="cover_der_uri" select="concat('ifs:',$cover_derivid,'/')" />
           <xsl:variable name="cover_der_xml" select="document($cover_der_uri)/mcr_directory/children" />
-          <xsl:variable name="sound_uri" select="concat('ifs:',$sound_derivid,'/')" />
+          <xsl:variable name="sound_der_uri" select="concat('ifs:',$sound_derivid,'/')" />
           <xsl:variable name="sound_der_xml" select="document($sound_der_uri)/mcr_directory/children" />
           
-          <xsl:variable name="cover_A_filename" select="$cover_der_xml/child[contains(name, 001_cov)]/name" />
-          <xsl:variable name="cover_B_filename" select="$cover_der_xml/child[contains(name, 002_cov)]/name" />
+          <xsl:variable name="cover_A_filename" select="$cover_der_xml/child[contains(name, '001_cov')]/name" />
+          <xsl:variable name="cover_B_filename" select="$cover_der_xml/child[contains(name, '002_cov')]/name" />
           
           <xsl:variable name="sound_ziplink" select="concat($ServletsBaseURL,'MCRZipServlet',$JSessionID,'?id=',$sound_derivid)" />
 

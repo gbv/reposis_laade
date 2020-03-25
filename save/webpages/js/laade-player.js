@@ -19,43 +19,16 @@ var loopStatus = false;
 // flag for auto play
 var playAfterLoading = false;
 
-// load track
-// TODO: remove hard coded track
-wavesurfer.load('http://localhost:8291/mir/wavedata/WLMMA_T_24156_A_01.mp3');
+// load maindoc as initial track
+wavesurfer.load( $('.lde-current-track-name').data('ini-track') );
 
-
-/* load track with prerended peack data
-   TODO: loading event is not fired in this way and causes trouble
-         fix it when you can
-fetch('http://localhost:8291/mir/wavedata/WLMMA_T_24156_A_01.json')
-.then(response => {
-    if (!response.ok) {
-        throw new Error('HTTP error ' + response.status);
-    }
-    return response.json();
-})
-.then(peaks => {
-    console.log(
-        'loaded peaks! sample_rate: ' + peaks.sample_rate
-    );
-
-    // load peaks into wavesurfer.js
-    wavesurfer.load('http://localhost:8291/mir/wavedata/WLMMA_T_24156_A_01.mp3', peaks.data);
-    $("#waveform .spinner-border").hide();
-    $("#waveform .lde-message").hide();
-    $(".progress").hide();
-})
-.catch(e => {
-    console.error('error', e);
-});
-*/
 
 // ready to play track, peaks calculated
 wavesurfer.on('ready', function () {
   // remove loading info
   $("#waveform .spinner-border").hide();
   $("#waveform .lde-message").hide();
-  // calculate autoplay and adjust play buttin
+  // calculate autoplay and adjust play button
   if ( playAfterLoading ) {
     wavesurfer.play();
     playAfterLoading = false;
