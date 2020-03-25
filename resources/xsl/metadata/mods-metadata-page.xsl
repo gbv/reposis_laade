@@ -53,16 +53,6 @@
         </div>
       </div>
 
-      <!--
-      <xsl:if test="div[contains(@id,'mir-collapse-')]">
-        <div class="detail_block">
-          <div class="" id="record_detail">
-            <xsl:apply-templates select="div[@id='mir-collapse-files']" mode="copyContent" />
-          </div>
-        </div>
-      </xsl:if>-->
-
-
       <xsl:if test="div[@id='laade-track-list']">
         <xsl:apply-templates select="div[@id='laade-track-list']" mode="copyContent" />
       </xsl:if>
@@ -201,49 +191,6 @@
         </div>
       </div>
 
-<!-- not used again
-
-        <div id="main_col" class="col-12 col-sm-8">
-          <div class="detail_block">
-            <xsl:apply-templates select="div[@id='mir-abstract-plus']" mode="copyContent" />
-          </div>
-
-          <xsl:comment>fileupload</xsl:comment>
-          <xsl:if test="div[contains(@id,'mir-file-upload')]">
-            <xsl:apply-templates select="div[@id='mir-file-upload']" mode="copyContent" />
-          </xsl:if>
-
-          <xsl:comment>viewer</xsl:comment>
-          <xsl:if test="div[@id = 'mir-viewer']">
-            <xsl:apply-templates select="div[@id='mir-viewer']" mode="copyContent" />
-          </xsl:if>
-
-          <xsl:comment>files</xsl:comment>
-          <xsl:if test="div[contains(@id,'mir-collapse-')]">
-            <div class="detail_block">
-              <div class="" id="record_detail">
-                <xsl:apply-templates select="div[@id='mir-collapse-files']" mode="copyContent" />
-              </div>
-            </div>
-          </xsl:if>
-
-          <xsl:comment>metadata</xsl:comment>
-          <xsl:if test="div[contains(@id,'mir-metadata')]/table[@class='mir-metadata']/tr">
-            <div class="mir_metadata">
-              <h3>
-                <xsl:value-of select="i18n:translate('component.mods.metaData.dictionary.categorybox')" />
-              </h3>
-              <xsl:apply-templates select="div[@id='mir-metadata']" mode="newMetadata" />
-              <xsl:if test="div[contains(@id,'mir-metadata')]/table[@class='mir-metadata']/tr/td/div[contains(@class,'openstreetmap-container')]">
-                <link rel="stylesheet" type="text/css" href="{$WebApplicationBaseURL}assets/openlayers/ol.css" />
-                <script type="text/javascript" src="{$WebApplicationBaseURL}assets/openlayers/ol.js" />
-                <script type="text/javascript" src="{$WebApplicationBaseURL}js/mir/geo-coords.min.js"></script>
-              </xsl:if>
-            </div>
-          </xsl:if>
-        </div>
-      </div>
--->
 
       <xsl:copy-of select="document(concat('xslTransform:schemaOrg:mcrobject:', @ID))" />
       <script src="{$WebApplicationBaseURL}mir-layout/assets/jquery/plugins/shariff/shariff.min.js"></script>

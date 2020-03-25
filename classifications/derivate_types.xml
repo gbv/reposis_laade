@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycoreclass xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MCRClassification.xsd" ID="derivate_types">
+  <label xml:lang="de" text="Dateibereichtyp" />
+  <label xml:lang="en" text="Type of file area" />
+  <categories>
+    <category ID="cover">
+      <label xml:lang="de" text="Cover" description="Cover des Tonträgers" />
+      <label xml:lang="en" text="Cover" />
+    </category>
+    <category ID="sound">
+      <label xml:lang="en" text="Sound" />
+      <label xml:lang="de" text="Tonaufnahme" />
+    </category>
+  </categories>
+</mycoreclass>
