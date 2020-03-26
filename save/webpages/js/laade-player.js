@@ -1,6 +1,7 @@
 // init wave surfer
 var wavesurfer = WaveSurfer.create({
   container: '#waveform',
+  backend: 'MediaElement',
   barWidth: 2,
   barRadius: 0,
   barHeight: 2,
@@ -19,8 +20,21 @@ var loopStatus = false;
 // flag for auto play
 var playAfterLoading = false;
 
-// load maindoc as initial track
-wavesurfer.load( $('.lde-current-track-name').data('ini-track') );
+fetch( $('.lde-current-track-name').data('prerendered-json') )
+.then(response => {
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  return response.json();
+})
+.then(peaks => {
+  console.log('loaded peaks! sample_rate: ' + peaks.sample_rate);
+  // load maindoc as initial track 
+  wavesurfer.load( $('.lde-current-track-name').data('ini-track'), peaks.data );
+})
+.catch((e) => {
+  console.error('error', e);
+});
 
 
 // ready to play track, peaks calculated
