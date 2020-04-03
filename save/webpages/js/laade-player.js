@@ -1,3 +1,5 @@
+/* ==== settings ============================================================ */
+
 // init wave surfer
 var wavesurfer = WaveSurfer.create({
   container: '#waveform',
@@ -15,27 +17,14 @@ var wavesurfer = WaveSurfer.create({
     })
   ]
 });
+
 // flag for repeat button
 var loopStatus = false;
+
 // flag for auto play
 var playAfterLoading = false;
 
-fetch( $('.lde-current-track-name').data('prerendered-json') )
-.then(response => {
-  if (!response.ok) {
-    throw new Error("HTTP error " + response.status);
-  }
-  return response.json();
-})
-.then(peaks => {
-  console.log('loaded peaks! sample_rate: ' + peaks.sample_rate);
-  // load maindoc as initial track 
-  wavesurfer.load( $('.lde-current-track-name').data('ini-track'), peaks.data );
-})
-.catch((e) => {
-  console.error('error', e);
-});
-
+/* ==== events ============================================================== */
 
 // ready to play track, peaks calculated
 wavesurfer.on('ready', function () {
@@ -79,8 +68,13 @@ wavesurfer.on('loading', function (event) {
   }
 });
 
-// document ready
+/* ==== functions =========================================================== */
+
+/* ---- document ready ------------------------------------------------------ */
 $(function() {
+
+  // load track to player
+  loadTrack( $('.lde-current-track-name').data('ini-track'), $('.lde-current-track-name').data('prerendered-json') );
 
   // bind function to backward button
   $( ".lde-js-button-backward" ).on( "click", function( event ) {
@@ -141,7 +135,8 @@ $(function() {
   // bind function play track (from track list)
   $( ".lde-js-play-track" ).on( "click", function( event ) {
     event.stopPropagation();
-    wavesurfer.load( $(this).attr( 'href' ) );
+    // load track to player
+    loadTrack( $(this).attr('href'), $(this).data('prerendered-json') );
     $("#waveform .spinner-border").show();
     $("#waveform .lde-message").show();
     $(".lde-current-track-name").html( $(this).data('track-name') );
@@ -159,4 +154,27 @@ $(function() {
     $( "." + $( this ).data('side-cover') ).removeClass("d-none");
   })
 
+
 });
+
+/* ---- load track ---------------------------------------------------------- */
+function loadTrack( trackURL, peakURL ) {
+  // get pre calculated peaks
+  fetch( peakURL )
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("HTTP error " + response.status);
+    }
+    return response.json();
+  })
+  .then(peaks => {
+    $(".progress").hide();
+    // use prerendered peaks and play track
+    return wavesurfer.load( trackURL, peaks.data );
+  })
+  .catch((e) => {
+    console.error('error', e);
+    // calculate peaks client sided and play track
+    return wavesurfer.load( trackURL );
+  });
+}

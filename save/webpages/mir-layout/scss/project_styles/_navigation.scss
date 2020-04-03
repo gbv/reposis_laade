@@ -10,6 +10,9 @@
   background-color: transparent;
   color: $secondary;
   box-shadow: none;
+  .navbar {
+    padding: 0;
+  }
 }
 
 .mir-main-nav nav .navbar-nav > li > a {
