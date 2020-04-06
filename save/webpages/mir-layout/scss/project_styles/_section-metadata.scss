@@ -8,6 +8,22 @@
 
 .lde-tracks {
   margin-top: 3rem;
+  // play button in track list
+  // is controled by a class named active
+  a {
+    > .lde-pause-button {
+      display: none;
+      color: $warning;
+    }
+    &.active {
+      > .lde-play-button {
+        display: none;
+      }
+      > .lde-pause-button {
+        display: inline;
+      }
+    }
+  }
 }
 
 #lde-track-lists .table th {

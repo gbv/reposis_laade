@@ -14,20 +14,20 @@
   <xsl:template match="/">
     <!-- check if sound derivate exists -->
     <xsl:if test="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound']">
-      
+
       <xsl:variable name="sound_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
-      
+
       <xsl:choose>
         <xsl:when test="key('rights', $sound_derivid)/@read">
 
-  
+
           <div id="laade-player">
-  
+
             <div class="row lde-player">
               <div class="col">
                 <script src="{$WebApplicationBaseURL}js/wavesurfer.js"></script>
                 <script src="{$WebApplicationBaseURL}js/wavesurfer.timeline.js"></script>
-  
+
                 <div id="waveform" class="text-center">
                   <div class="lde-message mt-5 text-center">Lade Datei und bereite Ansicht vor ...</div>
                   <div class="spinner-border mb-3 mt-3" role="status">
@@ -37,13 +37,13 @@
                     <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                   </div>
                 </div>
-  
+
                 <div class="row">
                   <div class="col">
                     <div id="wave-timeline"></div>
                   </div>
                 </div>
-  
+
                 <div class="row d-none">
                   <div class="col-6">
                     <span class="lde-player-current">0</span>
@@ -52,7 +52,7 @@
                     <span class="lde-player-duration">0</span>
                   </div>
                 </div>
-  
+
                 <div class="row lde-player-controls">
                   <div class="col-auto">
                     <a href="#" class="lde-player-button lde-js-button-backward" title="Backward">
@@ -87,11 +87,11 @@
                   </div>
                 </div>
                 <script src="{$WebApplicationBaseURL}js/laade-player.js"></script>
-  
+
               </div>
             </div>
           </div>
-  
+
         </xsl:when>
         <xsl:otherwise>
           <xsl:comment>

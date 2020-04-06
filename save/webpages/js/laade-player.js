@@ -35,12 +35,8 @@ wavesurfer.on('ready', function () {
   if ( playAfterLoading ) {
     wavesurfer.play();
     playAfterLoading = false;
-    $( ".lde-js-play" ).addClass( "d-none" );
-    $( ".lde-js-stop" ).removeClass( "d-none" );
-  } else {
-    $( ".lde-js-play" ).removeClass( "d-none" );
-    $( ".lde-js-stop" ).addClass( "d-none" );
   }
+  handlePlayButton();
 });
 
 // reached end of track
@@ -49,12 +45,8 @@ wavesurfer.on('finish', function () {
   // calculate repeat and adjust play button
   if ( loopStatus ) {
     wavesurfer.play();
-    $( ".lde-js-play" ).addClass( "d-none" );
-    $( ".lde-js-stop" ).removeClass( "d-none" );
-  } else {
-    $( ".lde-js-play" ).removeClass( "d-none" );
-    $( ".lde-js-stop" ).addClass( "d-none" );
   }
+  handlePlayButton();
 });
 
 // track is loading (but not ready to play after progress reached 100)
@@ -87,13 +79,7 @@ $(function() {
   $( ".lde-js-button-play" ).on( "click", function( event ) {
     event.stopPropagation();
     wavesurfer.playPause();
-    if ( wavesurfer.isPlaying() ) {
-      $( ".lde-js-play" ).addClass( "d-none" );
-      $( ".lde-js-stop" ).removeClass( "d-none" );
-    } else {
-      $( ".lde-js-play" ).removeClass( "d-none" );
-      $( ".lde-js-stop" ).addClass( "d-none" );
-    }
+    handlePlayButton();
     return false;
   });
 
@@ -132,30 +118,54 @@ $(function() {
     return false;
   });
 
-  // bind function play track (from track list)
+  // bind function play/stop track (from track list)
   $( ".lde-js-play-track" ).on( "click", function( event ) {
     event.stopPropagation();
-    // load track to player
-    loadTrack( $(this).attr('href'), $(this).data('prerendered-json') );
-    $("#waveform .spinner-border").show();
-    $("#waveform .lde-message").show();
-    $(".lde-current-track-name").html( $(this).data('track-name') );
-    playAfterLoading = true;
-    $("html, body").animate({ scrollTop: $(".lde-player").offset().top - 100 }, 1000);
+    // current loaded track
+    if ( $(".lde-current-track-name").html() == $(this).data('track-name') ) {
+      // is playing
+      if ( wavesurfer.isPlaying() ) {
+        //pause track
+        wavesurfer.pause();
+      } else {
+        // start playing
+        wavesurfer.play();
+      }
+      // update buttons
+      handlePlayButton();
+    } else {
+      // load track to player
+      loadTrack( $(this).attr('href'), $(this).data('prerendered-json') );
+      $("#waveform .spinner-border").show();
+      $("#waveform .lde-message").show();
+      $(".lde-current-track-name").html( $(this).data('track-name') );
+      playAfterLoading = true;
+      //$("html, body").animate({ scrollTop: $(".lde-player").offset().top - 100 }, 1000);
+    }
     return false;
   });
 
-  // add function to change tab (disk sides)
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    //e.target // newly activated tab
-    //e.relatedTarget // previous active tab
-    $( ".lde-currend-side-cover" ).addClass("d-none");
-    console.log( "." + $( this ).data('side-cover') );
-    $( "." + $( this ).data('side-cover') ).removeClass("d-none");
+  // toggle cover
+  $( ".lde-js-coverToggle" ).on( "click", function( event ) {
+    event.stopPropagation();
+    $( ".lde-currend-side-cover" ).toggleClass("d-none");
+    return false;
   })
-
-
 });
+
+/* ---- handlePlayButton ---------------------------------------------------- */
+function handlePlayButton() {
+  $("a[data-track-name]").removeClass('active');
+  if ( wavesurfer.isPlaying() ) {
+    $( ".lde-js-play" ).addClass( "d-none" );
+    $( ".lde-js-stop" ).removeClass( "d-none" );
+    $("a[data-track-name = '" + $(".lde-current-track-name").html() + "']").addClass('active');
+  } else {
+    $( ".lde-js-play" ).removeClass( "d-none" );
+    $( ".lde-js-stop" ).addClass( "d-none" );
+  }
+
+}
 
 /* ---- load track ---------------------------------------------------------- */
 function loadTrack( trackURL, peakURL ) {
