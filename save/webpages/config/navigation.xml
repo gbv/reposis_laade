@@ -17,7 +17,7 @@
     <label xml:lang="en">Footer menu</label>
     <item href="/content/below/impressum.xml" type="intern" replaceMenu="false" constrainPopUp="false">
       <label xml:lang="de">Impressum</label>
-      <label xml:lang="en">Impressum</label>
+      <label xml:lang="en">Imprint</label>
     </item>
     <!--
     <item href="/content/below/contact.xml" type="intern" replaceMenu="false" constrainPopUp="false">

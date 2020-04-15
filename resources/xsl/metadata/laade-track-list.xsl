@@ -45,7 +45,7 @@
           <div id="laade-track-list">
 
             <div class="row lde-tracks">
-              <div class="col-6">
+              <div class="col-md-6">
                 <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_front_filename}" class="lde-currend-side-cover">
                   <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_front_filename}" class="img-fluid" alt="..." />
                 </a>
@@ -59,7 +59,7 @@
                   </a>
                 </xsl:if>
               </div>
-              <div class="col-6">
+              <div class="col-md-6">
 
                 <ul class="nav nav-tabs lde-nav-tabs--light" id="lde-track-lists-nav" role="tablist">
                   <xsl:choose>
@@ -82,8 +82,8 @@
                       <div class="btn-group">
                         <a data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" href="#" aria-expanded="false"><i class="fas fa-cog"></i> Aktionen</a>
                         <ul class="dropdown-menu dropdown-menu-right" style="">
-                          <li class="dropdown-item">
-                            <a class="option downloadzip" href="{$sound_ziplink}">als Zip speichern</a>
+                          <li>
+                            <a class="option downloadzip dropdown-item" href="{$sound_ziplink}">als Zip speichern</a>
                           </li>
                         </ul>
                       </div>
@@ -95,134 +95,38 @@
 
                   <xsl:choose>
                     <xsl:when test="$sound_der_xml/child[contains(name,'_B_')]">
+
                       <div class="tab-pane fade show active" id="lde-side-a" role="tabpanel" aria-labelledby="Seite A">
-                        <table class="table table-sm table-striped mt-1">
-                          <thead>
 
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Aktion</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Datum</th>
-                              <th scope="col">Grösse</th>
-                            </tr>
+                        <xsl:call-template name="generateTrackList">
+                          <xsl:with-param name="sound_file_condition" select="'_A_'"/>
+                          <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
+                          <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
+                        </xsl:call-template>
 
-                          </thead>
-                          <tbody>
-
-                            <xsl:for-each select="$sound_der_xml/child[contains(name,'_A_')]">
-                              <tr>
-                                <th scope="row"><xsl:value-of select="position()"/></th>
-                                <td>
-                                  <a
-                                    href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}"
-                                    data-prerendered-json="{$WebApplicationBaseURL}rsc/wavesurfer/{$sound_derivid}/{name}.json"
-                                    data-track-name="{name}"
-                                    class="lde-js-play-track">
-                                    <i class="far fa-play-circle lde-play-button"></i>
-                                    <i class="far fa-pause-circle lde-pause-button"></i>
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}">
-                                    <xsl:value-of select="name"/>
-                                  </a>
-                                </td>
-                                <td><xsl:value-of select="date[@type='lastModified']"/></td>
-                                <td><xsl:value-of select="size"/></td>
-                              </tr>
-                            </xsl:for-each>
-
-                          </tbody>
-                        </table>
                       </div>
                       <div class="tab-pane fade" id="lde-side-b" role="tabpanel" aria-labelledby="Seite B">
-                        <table class="table table-sm table-striped mt-3">
-                          <thead>
 
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Aktion</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Datum</th>
-                              <th scope="col">Grösse</th>
-                            </tr>
+                        <xsl:call-template name="generateTrackList">
+                          <xsl:with-param name="sound_file_condition" select="'_B_'"/>
+                          <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
+                          <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
+                        </xsl:call-template>
 
-                          </thead>
-                          <tbody>
-
-                            <xsl:for-each select="$sound_der_xml/child[contains(name,'_B_')]">
-                              <tr>
-                                <th scope="row"><xsl:value-of select="position()"/></th>
-                                <td>
-                                  <a
-                                    href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}"
-                                    data-prerendered-json="{$WebApplicationBaseURL}rsc/wavesurfer/{$sound_derivid}/{name}.json"
-                                    data-track-name="{name}"
-                                    class="lde-js-play-track">
-                                    <i class="far fa-play-circle lde-play-button"></i>
-                                    <i class="far fa-pause-circle lde-pause-button"></i>
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}">
-                                    <xsl:value-of select="name"/>
-                                  </a>
-                                </td>
-                                <td><xsl:value-of select="date[@type='lastModified']"/></td>
-                                <td><xsl:value-of select="size"/></td>
-                              </tr>
-                            </xsl:for-each>
-
-                          </tbody>
-                        </table>
                       </div>
                     </xsl:when>
                     <xsl:otherwise>
-                      <div class="tab-pane fade show active" id="lde-cd" role="tabpanel" aria-labelledby="CD">
-                        <table class="table table-sm table-striped mt-1">
-                          <thead>
+                      <div class="tab-pane fade show active" id="lde-cd" role="tabpanel" aria-labelledby="Titel">
 
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Aktion</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Datum</th>
-                              <th scope="col">Grösse</th>
-                            </tr>
+                        <xsl:call-template name="generateTrackList">
+                          <xsl:with-param name="sound_file_condition" select="'.'"/>
+                          <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
+                          <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
+                        </xsl:call-template>
 
-                          </thead>
-                          <tbody>
-
-                            <xsl:for-each select="$sound_der_xml/child">
-                              <tr>
-                                <th scope="row"><xsl:value-of select="position()"/></th>
-                                <td>
-                                  <a
-                                    href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}"
-                                    data-prerendered-json="{$WebApplicationBaseURL}rsc/wavesurfer/{$sound_derivid}/{name}.json"
-                                    data-track-name="{name}"
-                                    class="lde-js-play-track">
-                                    <i class="far fa-play-circle lde-play-button"></i>
-                                    <i class="far fa-pause-circle lde-pause-button"></i>
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}">
-                                    <xsl:value-of select="name"/>
-                                  </a>
-                                </td>
-                                <td><xsl:value-of select="date[@type='lastModified']"/></td>
-                                <td><xsl:value-of select="size"/></td>
-                              </tr>
-                            </xsl:for-each>
-
-                          </tbody>
-                        </table>
                       </div>
                     </xsl:otherwise>
                   </xsl:choose>
-
 
                 </div>
 
@@ -239,4 +143,65 @@
     </xsl:if>
     <xsl:apply-imports />
   </xsl:template>
+
+  <xsl:template name="generateTrackList">
+    <xsl:param name="sound_file_condition" />
+    <xsl:param name="sound_der_xml" />
+    <xsl:param name="sound_derivid" />
+
+    <xsl:variable name="display-cell-class" select="'d-none d-sm-table-cell d-md-none d-lg-table-cell'" />
+
+    <table class="table table-sm mt-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col" class="{$display-cell-class}" >Datum</th>
+          <th scope="col" class="{$display-cell-class}">Grösse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <xsl:for-each select="$sound_der_xml/child[contains(name,$sound_file_condition)]">
+
+          <xsl:variable name="formated_file_size">
+            <xsl:call-template name="formatFileSize">
+              <xsl:with-param name="size" select="size"/>
+            </xsl:call-template>
+          </xsl:variable>
+
+          <xsl:variable name="formated_file_date">
+            <xsl:call-template name="formatISODate">
+              <xsl:with-param name="date" select="date[@type='lastModified']" />
+              <xsl:with-param name="format" select="'DD.MM.YYYY'" />
+            </xsl:call-template>
+          </xsl:variable>
+
+          <tr>
+            <td scope="row"><xsl:value-of select="position()"/></td>
+            <td>
+              <a
+                href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}"
+                data-prerendered-json="{$WebApplicationBaseURL}rsc/wavesurfer/{$sound_derivid}/{name}.json"
+                data-track-name="{name}"
+                title="{$formated_file_date} - {$formated_file_size}"
+                class="lde-js-play-track">
+                <i class="far fa-play-circle lde-play-button"></i>
+                <i class="far fa-pause-circle lde-pause-button"></i>
+                <xsl:value-of select="name"/>
+              </a>
+            </td>
+            <td class="{$display-cell-class}">
+              <xsl:value-of select="$formated_file_date" />
+            </td>
+            <td class="{$display-cell-class}">
+              <span class="text-nowrap">
+                <xsl:value-of select="$formated_file_size" />
+              </span>
+            </td>
+          </tr>
+        </xsl:for-each>
+      </tbody>
+    </table>
+  </xsl:template>
+
 </xsl:stylesheet>

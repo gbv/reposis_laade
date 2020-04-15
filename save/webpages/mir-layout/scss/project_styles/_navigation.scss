@@ -36,6 +36,9 @@
     color: $primary;
     background-color: transparent;
   }
+  strong {
+    font-weight: 700;
+  }
 }
 
 .nav-link {
@@ -103,7 +106,7 @@
   width: 0;
   height: 0;
   left: 16px;
-  top: -20px;
+  top: -19px;
   border: 10px solid;
   border-color: transparent transparent white transparent;
 }
@@ -180,7 +183,7 @@
 }
 
 .lde-options--light {
-  a {
+  .dropdown-toggle {
     border: none;
     background-color: transparent;
     color: $body-color;
@@ -193,8 +196,8 @@
     }
   }
   .btn-secondary:not(:disabled):not(.disabled):active,
-  .btn-secondary:not(:disabled):not(.disabled).active, .show >
-  .btn-secondary.dropdown-toggle {
+  .btn-secondary:not(:disabled):not(.disabled).active,
+  .show > .btn-secondary.dropdown-toggle {
     color: $primary;
     background-color: transparent;
   }

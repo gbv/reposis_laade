@@ -24,7 +24,7 @@
           </div>
           <!-- main menu -->
           <div class="col-auto mir-main-nav">
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg navbar-light">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mir-main-nav" aria-controls="mir-main-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>

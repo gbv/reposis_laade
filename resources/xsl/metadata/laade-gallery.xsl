@@ -14,31 +14,31 @@
   <xsl:template match="/">
     <!-- check if cover derivate exists -->
     <xsl:if test="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='cover']">
-      
+
       <xsl:variable name="cover_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/@xlink:href" />
-      
+
       <xsl:choose>
         <xsl:when test="key('rights', $cover_derivid)/@read">
 
           <xsl:variable name="ziplink" select="concat($ServletsBaseURL,'MCRZipServlet',$JSessionID,'?id=',$cover_derivid)" />
           <xsl:variable name="suburi" select="concat('ifs:',$cover_derivid,'/')" />
-  
+
             <div id="laade-gallery">
               <div class="row lde-gallery">
-  
+
                 <div class="col-12 text-right">
                   <div class="dropdown options lde-options--light">
                     <div class="btn-group">
                       <a data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" href="#" aria-expanded="false"><i class="fas fa-cog"></i> Aktionen</a>
                       <ul class="dropdown-menu dropdown-menu-right" style="">
-                        <li class="dropdown-item">
-                          <a class="option downloadzip" href="{$ziplink}">als Zip speichern</a>
+                        <li>
+                          <a class="option downloadzip dropdown-item" href="{$ziplink}">als Zip speichern</a>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="col-12">
                   <div class="card-columns lde-thumnails">
                     <xsl:for-each select="document($suburi)/mcr_directory/children/child">
