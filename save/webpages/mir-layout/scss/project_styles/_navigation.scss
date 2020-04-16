@@ -47,17 +47,22 @@
 
 .lde-logo-box .dropdown-toggle::after {
   display: block;
-  margin-left: auto;
+  margin-left: -6px;
   content: "";
-  border-top: 6px solid $primary;
+  border: 6px solid $primary;
   border-right: 6px solid transparent;
-  border-bottom: 0;
   border-left: 6px solid transparent;
+  border-bottom: 6px solid transparent;
   margin-right: auto;
   margin-top: 0.5rem;
   position: absolute;
-  bottom: 0.5rem;
-  left: 20px;
+  left: 50%;
+  bottom: -19px;
+  z-index: 2000;
+  height: 30px;
+}
+.lde-logo-box .show .dropdown-toggle::after {
+  border-bottom: 6px solid white;
 }
 
 .dropdown-menu {
@@ -85,30 +90,12 @@
 .mir-main-nav nav .navbar-nav .dropdown-menu {
   background-color: white;
   border-radius: 0px !important;
-  margin-top: 20px !important;
+  margin-top: 18px !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   -webkit-box-shadow: 0px 20px 30px -14px rgba(0,0,0,1);
   -moz-box-shadow: 0px 20px 30px -14px rgba(0,0,0,1);
   box-shadow: 0px 20px 30px -14px rgba(0,0,0,1);
   border: 1px solid #95989a;
-}
-
-.mir-prop-nav .dropdown-menu::before,
-.mir-main-nav nav .navbar-nav .dropdown-menu::before {
-  border: 6px solid #476481;
-  border-top-color: rgb(71, 100, 129);
-  border-right-color: rgb(71, 100, 129);
-  border-bottom-color: rgb(71, 100, 129);
-  border-left-color: rgb(71, 100, 129);
-  border-color: transparent transparent #476481 transparent;
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 16px;
-  top: -19px;
-  border: 10px solid;
-  border-color: transparent transparent white transparent;
 }
 
 .mir-main-nav nav .navbar-nav .dropdown-menu > li > a {
@@ -237,7 +224,7 @@
         width: 0;
         height: 0;
         left: 16px;
-        top: -19px;
+        top: -16px;
         border: 10px solid;
         border-color: transparent transparent white transparent;
       }
