@@ -59,7 +59,7 @@
                   </a>
                 </xsl:if>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-5 mt-md-0">
 
                 <ul class="nav nav-tabs lde-nav-tabs--light" id="lde-track-lists-nav" role="tablist">
                   <xsl:choose>

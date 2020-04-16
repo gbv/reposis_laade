@@ -79,14 +79,27 @@
 // Medium devices (tablets) and below: <= 992px
 @include media-breakpoint-down(md) {
   // add/overwrite styles for responsive level md and lower
+  .lde-project-logo {
+    flex-basis: 100%;
+  }
 }
 
 // Small devices (landscape phones) and below: <= 768px
 @include media-breakpoint-down(sm) {
   // add/overwrite styles for responsive level sm and lower
+  .lde-logo-box {
+    .row {
+      justify-content: space-between;
+    }
+  }
 }
 
 // Extra small devices (portrait phones): <= 576px
 @include media-breakpoint-down(xs) {
   // add/overwrite styles for responsive level xs
+  .lde-project-logo {
+    &__slogan {
+      display: none;
+    }
+  }
 }

@@ -14,6 +14,7 @@
     <div class="lde-logo-box">
       <div class="container">
         <div class="row align-items-end">
+
           <!-- logo -->
           <div class="col lde-project-logo">
             <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
@@ -22,9 +23,10 @@
               <span class="lde-project-logo__slogan">Center for World Music</span>
             </a>
           </div>
+
           <!-- main menu -->
           <div class="col-auto mir-main-nav">
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-md navbar-light">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mir-main-nav" aria-controls="mir-main-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -46,6 +48,7 @@
               </div>
             </nav>
           </div>
+
           <!-- options -->
           <div class="col-auto mir-prop-nav">
             <nav>

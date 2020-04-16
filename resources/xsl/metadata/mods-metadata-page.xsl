@@ -33,10 +33,10 @@
       </xsl:if>
 
       <div class="row lde-tools">
-        <div class="col-12 col-sm-8 col-sm-float-4 col-md-8 col-md-float-4">
+        <div class="col-md-6 col-lg-8">
           <xsl:apply-templates select="div[@id='mir-abstract-badges']" mode="copyContent" />
         </div>
-        <div class="col-12 col-sm-4 col-sm-push-8 col-md-4 col-md-push-8">
+        <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
             <xsl:apply-templates select="div[@id='mir-edit']" mode="copyContent" />
         </div>
       </div>
@@ -60,7 +60,7 @@
       </xsl:if>
 
       <div class="row">
-        <div class="col-8 mir_metadata">
+        <div class="col-lg-8 mir_metadata">
 
           <xsl:if test="div[contains(@id,'mir-metadata')]/table[@class='mir-metadata']/tr">
             <h3>
@@ -75,7 +75,7 @@
           </xsl:if>
 
         </div>
-        <div class="col-4">
+        <div class="col-lg-4">
 
           <xsl:comment>cites</xsl:comment>
           <xsl:if test="div[@id='mir-citation']">
