@@ -27,16 +27,10 @@
               <div class="row lde-gallery">
 
                 <div class="col-12 text-right">
-                  <div class="dropdown options lde-options--light">
-                    <div class="btn-group">
-                      <a data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" href="#" aria-expanded="false"><i class="fas fa-cog"></i> Aktionen</a>
-                      <ul class="dropdown-menu dropdown-menu-right" style="">
-                        <li>
-                          <a class="option downloadzip dropdown-item" href="{$ziplink}">als Zip speichern</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <xsl:apply-templates select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]" mode="laadeDerivateActions">
+                    <xsl:with-param name="deriv" select="@xlink:href" />
+                    <xsl:with-param name="parentObjID" select="$objID" />
+                  </xsl:apply-templates>
                 </div>
 
                 <div class="col-12">
