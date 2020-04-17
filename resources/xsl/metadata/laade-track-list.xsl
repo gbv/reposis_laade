@@ -172,7 +172,7 @@
           <xsl:variable name="formated_file_date">
             <xsl:call-template name="formatISODate">
               <xsl:with-param name="date" select="date[@type='lastModified']" />
-              <xsl:with-param name="format" select="'DD.MM.YYYY'" />
+              <xsl:with-param name="format" select="i18n:translate('metaData.date')" />
             </xsl:call-template>
           </xsl:variable>
 
