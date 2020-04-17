@@ -28,8 +28,8 @@
 
                 <div class="col-12 text-right">
                   <xsl:apply-templates select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]" mode="laadeDerivateActions">
-                    <xsl:with-param name="deriv" select="@xlink:href" />
-                    <xsl:with-param name="parentObjID" select="$objID" />
+                    <xsl:with-param name="deriv" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/@xlink:href" />
+                    <xsl:with-param name="parentObjID" select="mycoreobject/@ID" />
                   </xsl:apply-templates>
                 </div>
 

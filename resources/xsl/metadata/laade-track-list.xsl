@@ -8,7 +8,8 @@
                 xmlns:acl="xalan://org.mycore.access.MCRAccessManager"
                 xmlns:embargo="xalan://org.mycore.mods.MCRMODSEmbargoUtils"
                 xmlns:piUtil="xalan://org.mycore.pi.frontend.MCRIdentifierXSLUtils"
-                exclude-result-prefixes="i18n mcr mods acl xlink embargo"
+                xmlns:encoder="xalan://java.net.URLEncoder" 
+                exclude-result-prefixes="i18n mcr mods acl xlink embargo encoder"
 >
   <xsl:import href="xslImport:modsmeta:metadata/laade-track-list.xsl" />
   <xsl:template match="/">
@@ -79,8 +80,8 @@
                   </xsl:choose>
                   <li class="nav-item ml-auto">
                     <xsl:apply-templates select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]" mode="laadeDerivateActions">
-                      <xsl:with-param name="deriv" select="@xlink:href" />
-                      <xsl:with-param name="parentObjID" select="$objID" />
+                      <xsl:with-param name="deriv" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
+                      <xsl:with-param name="parentObjID" select="mycoreobject/@ID" />
                     </xsl:apply-templates>
                   </li>
                 </ul>
@@ -198,4 +199,93 @@
     </table>
   </xsl:template>
 
+  <xsl:template match="derobject" mode="laadeDerivateActions">
+    <xsl:param name="deriv" />
+    <xsl:param name="parentObjID" />
+    
+    <xsl:if
+      test="(key('rights', $deriv)/@accKeyEnabled and key('rights', $deriv)/@readKey) and not(mcr:isCurrentUserGuestUser() or key('rights', $deriv)/@read or key('rights', $deriv)/@write)"
+      >
+      <div class="dropdown options  lde-options--light">
+        <div class="btn-group">
+          <a data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" href="#" aria-expanded="false"><i class="fas fa-cog"></i> Aktionen</a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li>
+              <a class="option dropdown-item" tabindex="-1" href="{$WebApplicationBaseURL}authorization/accesskey.xed?objId={$deriv}&amp;url={encoder:encode(string($RequestURL))}">
+                <xsl:value-of select="i18n:translate('mir.accesskey.setOnUser')" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </xsl:if>
+    
+    <xsl:if test="key('rights', $deriv)/@write">
+      <xsl:variable select="concat('mcrobject:',$deriv)" name="derivlink" />
+      <xsl:variable select="document($derivlink)" name="derivate" />
+      
+      <div class="dropdown options  lde-options--light">
+        <div class="btn-group">
+          <a data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" href="#" aria-expanded="false"><i class="fas fa-cog"></i> Aktionen</a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <xsl:if test="key('rights', $deriv)/@write">
+              <li>
+                <a href="{$WebApplicationBaseURL}editor/editor-derivate.xed{$HttpSession}?derivateid={$deriv}" class="option dropdown-item">
+                  <xsl:value-of select="i18n:translate('component.mods.metaData.options.updateDerivateName')" />
+                </a>
+              </li>
+            </xsl:if>
+            <xsl:if test="key('rights', $deriv)/@write">
+              <li>
+                <a href="{$ServletsBaseURL}MCRDisplayHideDerivateServlet?derivate={$deriv}" class="option dropdown-item">
+                  <xsl:value-of select="i18n:translate(concat('mir.derivate.display.', $derivate//derivate/@display))" />
+                </a>
+              </li>
+            </xsl:if>
+            <xsl:if test="key('rights', $deriv)/@write">
+              <li>
+                <a href="{$ServletsBaseURL}MCRZipServlet/{$deriv}" class="option dropdown-item downloadzip">
+                  <xsl:value-of select="i18n:translate('component.mods.metaData.options.zip')" />
+                </a>
+              </li>
+            </xsl:if>
+            <xsl:if test="key('rights', $deriv)/@delete">
+              <li class="last">
+                <a href="{$ServletsBaseURL}derivate/delete{$HttpSession}?id={$deriv}" class="option dropdown-item confirm_deletion" data-text="{i18n:translate('mir.confirm.derivate.text')}">
+                  <xsl:value-of select="i18n:translate('component.mods.metaData.options.delDerivate')" />
+                </a>
+              </li>
+            </xsl:if>
+            <xsl:if test="key('rights', $deriv)/@accKeyEnabled and key('rights', $deriv)/@write">
+              <xsl:variable name="action">
+                <xsl:choose>
+                  <xsl:when test="key('rights', $deriv)/@readKey">
+                    <xsl:text>edit</xsl:text>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>create</xsl:text>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable>
+              <li>
+                <a class="option dropdown-item" tabindex="-1"
+                  href="{$WebApplicationBaseURL}authorization/accesskey.xed?action={$action}&amp;objId={$deriv}&amp;url={encoder:encode(string($RequestURL))}"
+                  >
+                  <xsl:choose>
+                    <xsl:when test="key('rights', $deriv)/@readKey">
+                      <xsl:value-of select="i18n:translate('mir.accesskey.edit')" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="i18n:translate('mir.accesskey.add')" />
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </a>
+              </li>
+            </xsl:if>
+          </ul>
+        </div>
+      </div>
+    </xsl:if>
+  </xsl:template>
+  
 </xsl:stylesheet>
