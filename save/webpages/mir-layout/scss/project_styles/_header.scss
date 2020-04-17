@@ -92,14 +92,12 @@
       justify-content: space-between;
     }
   }
+  .lde-figure-head {
+    display: none;
+  }
 }
 
 // Extra small devices (portrait phones): <= 576px
 @include media-breakpoint-down(xs) {
   // add/overwrite styles for responsive level xs
-  .lde-project-logo {
-    &__slogan {
-      display: none;
-    }
-  }
 }

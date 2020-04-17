@@ -135,7 +135,9 @@ $(function() {
       handlePlayButton();
     } else {
       // load track to player
-      loadTrack( $(this).attr('href'), $(this).data('prerendered-json') );
+      trackUrl = $(this).data('baseurl') + 'servlets/MCRFileNodeServlet/' + $(this).data('derivid') + '/' + $(this).data('track-name');
+      console.log(trackUrl);
+      loadTrack( trackUrl, $(this).data('prerendered-json') );
       $("#waveform .spinner-border").show();
       $("#waveform .lde-message").show();
       $(".lde-current-track-name").html( $(this).data('track-name') );

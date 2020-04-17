@@ -5,9 +5,9 @@
     <div class="row">
       <div class="col" lang="de">
 
-        <h2>Impressum</h2>
+        <h1>Impressum</h1>
 
-        <h3>Herausgeber</h3>
+        <h2>Herausgeber</h2>
         <p>
           Center for World Music<br />
           der Stiftung Universität Hildesheim<br />
@@ -22,19 +22,19 @@
           Vertreten durch den Geschäftsführer des Center for World Music, Dr. Michael Fuhr.
         </p>
 
-        <h3>Haftungsausschluss</h3>
+        <h2>Haftungsausschluss</h2>
 
-        <h4>Haftung für Inhalte</h4>
+        <h3>Haftung für Inhalte</h3>
         <p>
           Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
         </p>
 
-        <h4>Haftung für Links</h4>
+        <h3>Haftung für Links</h3>
         <p>
           Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
         </p>
 
-        <h4>Urheberrecht</h4>
+        <h3>Urheberrecht</h3>
         <p>
           Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen, soweit nicht anders gekennzeichnet, der Lizenz <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">Creative Commons 4.0 BY-NC-SA</a>. Beiträge dürfen weiterverwendet werden, müssen aber namentlich gekennzeichnet, und dürfen nur unter denselben Bedingungen weitergeben werden. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind im Rahmen der CC-Lizenz, nicht aber für den kommerziellen Gebrauch gestattet.
         </p>
@@ -52,9 +52,9 @@
     <div class="row">
       <div class="col" lang="en">
 
-        <h2>Imprint</h2>
+        <h1>Imprint</h1>
 
-        <h3>Publisher</h3>
+        <h2>Publisher</h2>
         <p>
           Center for World Music<br />
           der Stiftung Universität Hildesheim<br />
@@ -69,19 +69,19 @@
           Represented by the managing director of the Center for World Music, Dr. Michael Fuhr.
         </p>
 
-        <h3>Disclaimer</h3>
+        <h2>Disclaimer</h2>
 
-        <h4>Liability for contents</h4>
+        <h3>Liability for contents</h3>
         <p>
           The contents of our pages were created with the greatest care. However, we cannot assume any liability for the correctness, completeness and topicality of the contents. As a service provider, we are responsible for our own content on these pages according to § 7 para.1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, we are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this respect is only possible from the time of knowledge of a concrete infringement. If we become aware of any such infringements, we will remove such content immediately.
         </p>
 
-        <h4>Liability for links</h4>
+        <h3>Liability for links</h3>
         <p>
           Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore we cannot assume any liability for these external contents. The respective provider or operator of the sites is always responsible for the contents of the linked sites. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not identifiable at the time of linking. However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation of the law. If we become aware of any infringements, we will remove such links immediately.
         </p>
 
-        <h4>Copyright</h4>
+        <h3>Copyright</h3>
         <p>
           The contents and works created by the site operators on these pages are subject to the Creative Commons 4.0 BY-NC-SA license, unless otherwise indicated. Contributions may be used further, but must be identified by name and may only be passed on under the same conditions. Contributions by third parties are marked as such. The reproduction, editing, distribution and any kind of use outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are permitted within the scope of the CC license, but not for commercial use.
         </p>

@@ -5,8 +5,13 @@
 // set the defaults for all responsive levels here
 // no (xl) media query necessary (desktop first)
 
+h1 {
+  font-size: 1.5rem;
+  color: $warning;
+}
+
 h2 {
-  font-size: 1.75rem;
+  font-size: 1.2rem;
   margin-top: 2.75rem;
   margin-bottom: 2rem;
   &:first-child {
@@ -16,6 +21,10 @@ h2 {
 
 strong {
   font-weight: 700;
+}
+
+.badge {
+  font-weight: 400;
 }
 
 // Large devices (desktops) and below: <= 1200px

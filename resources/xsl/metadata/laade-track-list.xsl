@@ -8,7 +8,7 @@
                 xmlns:acl="xalan://org.mycore.access.MCRAccessManager"
                 xmlns:embargo="xalan://org.mycore.mods.MCRMODSEmbargoUtils"
                 xmlns:piUtil="xalan://org.mycore.pi.frontend.MCRIdentifierXSLUtils"
-                xmlns:encoder="xalan://java.net.URLEncoder" 
+                xmlns:encoder="xalan://java.net.URLEncoder"
                 exclude-result-prefixes="i18n mcr mods acl xlink embargo encoder"
 >
   <xsl:import href="xslImport:modsmeta:metadata/laade-track-list.xsl" />
@@ -175,8 +175,10 @@
             <td scope="row"><xsl:value-of select="position()"/></td>
             <td>
               <a
-                href="{$ServletsBaseURL}MCRFileNodeServlet/{$sound_derivid}/{name}"
+                href="#"
                 data-prerendered-json="{$WebApplicationBaseURL}rsc/wavesurfer/{$sound_derivid}/{name}.json"
+                data-baseurl="{$WebApplicationBaseURL}"
+                data-derivid="{$sound_derivid}"
                 data-track-name="{name}"
                 title="{$formated_file_date} - {$formated_file_size}"
                 class="lde-js-play-track">
@@ -202,7 +204,7 @@
   <xsl:template match="derobject" mode="laadeDerivateActions">
     <xsl:param name="deriv" />
     <xsl:param name="parentObjID" />
-    
+
     <xsl:if
       test="(key('rights', $deriv)/@accKeyEnabled and key('rights', $deriv)/@readKey) and not(mcr:isCurrentUserGuestUser() or key('rights', $deriv)/@read or key('rights', $deriv)/@write)"
       >
@@ -219,11 +221,11 @@
         </div>
       </div>
     </xsl:if>
-    
+
     <xsl:if test="key('rights', $deriv)/@write">
       <xsl:variable select="concat('mcrobject:',$deriv)" name="derivlink" />
       <xsl:variable select="document($derivlink)" name="derivate" />
-      
+
       <div class="dropdown options  lde-options--light">
         <div class="btn-group">
           <a data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" href="#" aria-expanded="false"><i class="fas fa-cog"></i> Aktionen</a>
@@ -287,5 +289,5 @@
       </div>
     </xsl:if>
   </xsl:template>
-  
+
 </xsl:stylesheet>
