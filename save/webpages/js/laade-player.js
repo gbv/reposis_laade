@@ -8,6 +8,7 @@ var wavesurfer = WaveSurfer.create({
   barRadius: 0,
   barHeight: 2,
   height: 200,
+  normalize: true,
   barGap: 10,
   waveColor: '#4d4d4d',
   progressColor: '#fd7f00',
