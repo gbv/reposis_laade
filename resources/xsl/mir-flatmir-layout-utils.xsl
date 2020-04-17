@@ -19,7 +19,7 @@
           <div class="col lde-project-logo">
             <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
                class="lde-project-logo__link">
-              <img class="lde-project-logo__image" src="{$WebApplicationBaseURL}images/logos/CWM_Logo_rgb_gruen-1.svg" alt=""/>
+              <img class="lde-project-logo__image" src="{$WebApplicationBaseURL}images/logos/CWM_Logo_rgb_gruen-1.jpg" alt="" />
               <span class="lde-project-logo__slogan">Center for World Music</span>
             </a>
           </div>
@@ -115,7 +115,7 @@
           <div class="col-auto">
             <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
                class="lde-logo-banner__link">
-              <img class="lde-logo-banner__image" src="{$WebApplicationBaseURL}images/logos/CWM_Logo_rgb_gruen-1.svg" alt=""/>
+              <img class="lde-logo-banner__image" src="{$WebApplicationBaseURL}images/logos/CWM_Logo_rgb_gruen-1.jpg" alt=""/>
             </a>
           </div>
           <div class="col-auto">

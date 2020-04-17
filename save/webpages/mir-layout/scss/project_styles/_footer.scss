@@ -15,6 +15,9 @@
 .lde-logo-banner {
   background-color: #d6d6d6;
   padding: 2rem 0 1.5rem 0;
+  &__image {
+    width: 80px;
+  }
   &__link {
     &:hover {
       text-decoration: none;

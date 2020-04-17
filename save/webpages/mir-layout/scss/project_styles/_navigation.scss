@@ -57,9 +57,9 @@
   margin-top: 0.5rem;
   position: absolute;
   left: 50%;
-  bottom: -19px;
+  bottom: auto;
   z-index: 2000;
-  height: 30px;
+  height: 35px;
 }
 .lde-logo-box .show .dropdown-toggle::after {
   border-bottom: 6px solid white;
