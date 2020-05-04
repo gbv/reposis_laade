@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MyCoReWebPage>
+
   <section xml:lang="de" title="Willkommen auf den Seiten des Laade-Archivs">
-    <div class="jumbotwo">
-      <div class="row">
-        <div class="col-md-9 col-md-offset-2" lang="de">
-          <h1>
-            Wolfgang-Laade-Archiv
-          </h1>
-          <p>
-            Diese Seite befindet sich noch im Aufbau!
-          </p>
-        </div>
+    <div class="row">
+      <div class="col" lang="de">
+        <h1>
+          Wolfgang Laade Music of Man Archive
+        </h1>
+        <p>
+          Die private Sammlung „Wolfgang Laade Music of Man Archive“  besteht aus ~45.000 Tonträgern (Schallplatten, Compact Discs und Musikkassetten). Gesammelt wurden sie zwischen 1950 und 1995 vom Schweizer Musikethnologen Prof. Dr. Wolfgang Laade. Zum 'Music of Man Archive' gehören außerdem eine Forschungsbibliothek (etwa 13.000 Einzeltitel), Musikinstrumente (circa 1.000 Objekte) sowie Videos, Ethnographica und ein umfangreicher Dokumentennachlass.
+        </p>
+        <p>
+          Wolfgang Laade zielte darauf ab, die globale Vielfalt musikalischer Ausdrucksformen zu dokumentieren. Dabei interessierten ihn insbesondere größere soziokulturelle Zusammenhänge. Als Sammler trennte Laade bewusst nicht zwischen nicht-westlichen und westlichen Musikformen oder auch zwischen Volksmusik, Popularmusik und Kunstmusik, wie dies in den Musikwissenschaften üblicherweise der Fall ist. Laade versuchte statt dessen, Musik als universales Phänomen zu betrachten, und verschiedene Musiken in ihren kulturell spezifischen Ausprägungen unabhängig von ihren Herkünften zu erfassen. In diesem Sinne verzichtete Laade auch weitgehend auf grundsätzliche ästhetische Fragestellungen. Dieser Ansatz spiegelt sich unmittelbar in der Zusammensetzung der Sammlung wider: So finden sich im Bestand des "Music of Man Archive" Streitlieder der Inuit neben Bach-Partiten, hinduistische Tempelgesänge neben Schlagersänger Roland Kaiser und algerischer Rai neben sozialistischen Kollektivkompositionen.
+        </p>
       </div>
     </div>
   </section>
+
   <section xml:lang="en" title="Welcome to Laade Archive">
-    <div class="jumbotwo">
-      <div class="row">
-        <div class="col-md-9 col-md-offset-2" lang="en">
-          <h1>
-            Wolfgang Laade Archive
-          </h1>
-          <p>
-            this page is coming soon ...
-          </p>
-        </div>
+    <div class="row">
+      <div class="col" lang="en">
+        <h1>
+          Wolfgang Laade Music of Man Archive
+        </h1>
+        <p>
+          The private collection "Wolfgang Laade Music of Man Archive" consists of ~45.000 sound carriers (records, compact discs and music cassettes). They were collected between 1950 and 1995 by the Swiss music ethnologist Prof. Dr. Wolfgang Laade. The 'Music of Man Archive' also includes a research library (about 13,000 individual titles), musical instruments (about 1,000 objects) as well as videos, ethnographica and an extensive collection of documents. 
+        </p>
+        <p>
+          Wolfgang Laade aimed to document the global diversity of musical forms of expression. He was particularly interested in larger socio-cultural contexts. As a collector, Laade deliberately did not separate between non-Western and Western forms of music or between folk music, popular music and art music, as is usually the case in musicology. Instead, Laade attempted to view music as a universal phenomenon and to capture various music in its culturally specific forms independent of its origins. In this sense, Laade also largely dispensed with fundamental aesthetic questions. This approach is directly reflected in the composition of the collection: Thus, the "Music of Man Archive" contains Inuit songs of contention alongside Bach partitas, Hindu temple songs alongside German pop singer Roland Kaiser, and Algerian Rai next to socialist collective compositions.
+        </p>
       </div>
     </div>
   </section>
+
   <meta>
-    <log lastEditor="administrator" date="2018-10-18" time="12:46"/>
+    <log lastEditor="administrator" date="2020-05-04" time="08:06"/>
   </meta>
+
 </MyCoReWebPage>
