@@ -10,6 +10,8 @@
   background-color: transparent;
   color: $secondary;
   box-shadow: none;
+  padding-left: 0px;
+  padding-right: 0px;
   .navbar {
     padding: 0;
   }
@@ -43,6 +45,10 @@
 
 .nav-link {
   padding: 1.5rem 15px;
+}
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .lde-logo-box .dropdown-toggle::after {
