@@ -4,7 +4,8 @@
     xmlns:i18n="xalan://org.mycore.services.i18n.MCRTranslation"
     xmlns:mcrver="xalan://org.mycore.common.MCRCoreVersion"
     xmlns:mcrxsl="xalan://org.mycore.common.xml.MCRXMLFunctions"
-    exclude-result-prefixes="i18n mcrver mcrxsl">
+    xmlns:calendar="xalan://java.util.GregorianCalendar"
+    exclude-result-prefixes="i18n mcrver mcrxsl calendar">
 
   <xsl:import href="resource:xsl/layout/mir-common-layout.xsl" />
 
@@ -23,7 +24,7 @@
             </a>
             <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
                class="lde-project-logo__link">
-              <span class="lde-project-logo__slogan text-nowrap">Wolfgang Laade Archiv</span>
+              <span class="lde-project-logo__slogan text-nowrap">Wolfgang Laade Music of Man Archive</span>
             </a>
           </div>
 
@@ -122,10 +123,11 @@
             </a>
           </div>
           <div class="col-auto">
+            <xsl:variable name="tmpDate" select="calendar:new()"/>
             <a href="{concat($WebApplicationBaseURL,substring($loaded_navigation_xml/@hrefStartingPage,2),$HttpSession)}"
                class="lde-logo-banner__link">
-              <span class="lde-logo-banner__slogan">Wolfgang Laade Archiv</span>
-              <span class="lde-logo-banner__copyright">© Center for World Music 2020</span>
+              <span class="lde-logo-banner__slogan">Wolfgang Laade Music of Man Archive</span>
+              <span class="lde-logo-banner__copyright">© Center for World Music <xsl:value-of select="calendar:get($tmpDate, 1)"/></span>
             </a>
           </div>
         </div>
