@@ -191,3 +191,4 @@ function loadTrack( trackURL, peakURL ) {
     return wavesurfer.load( trackURL );
   });
 }
+
