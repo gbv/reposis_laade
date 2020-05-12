@@ -35,6 +35,7 @@
     display: block;
     text-align: center;
     font-size: 0.75rem;
+    padding-right: 110px;
   }
 }
 
@@ -42,7 +43,9 @@
   background-color: $body-color;
   border-top: none;
 }
-
+.laade-logo__vzg {
+  height: 40px;
+}
 // Large devices (desktops) and below: <= 1200px
 @include media-breakpoint-down(lg) {
   // add/overwrite styles for responsive level lg and lower
@@ -56,6 +59,11 @@
 // Small devices (landscape phones) and below: <= 768px
 @include media-breakpoint-down(sm) {
   // add/overwrite styles for responsive level sm and lower
+  .lde-logo-banner {
+    &__copyright {
+      padding-right: 0px;
+    }
+  }
 }
 
 // Extra small devices (portrait phones): <= 576px

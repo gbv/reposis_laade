@@ -141,15 +141,26 @@
             <xsl:apply-templates select="$loaded_navigation_xml/menu[@id='below']/*" mode="footerMenu" />
           </ul>
         </div>
+        <div class="col text-center text-md-right align-self-center">
+          <a href="http://www.gbv.de/" class="laade-logo__link">
+            <img
+              src="{$WebApplicationBaseURL}images/logos/vzg_logo.svg"
+              alt="Verbundzentrale des GBV"
+              class="laade-logo__vzg" />
+          </a>
+        </div>
       </div>
     </div>
   </xsl:template>
 
   <xsl:template name="mir.powered_by">
     <xsl:variable name="mcr_version" select="concat('MyCoRe ',mcrver:getCompleteVersion())" />
-    <div id="powered_by">
+    <div id="powered_by" class="laade-logo">
       <a href="http://www.mycore.de">
-        <img src="{$WebApplicationBaseURL}mir-layout/images/mycore_logo_small_invert.png" title="{$mcr_version}" alt="powered by MyCoRe" />
+        <img
+          src="{$WebApplicationBaseURL}mir-layout/images/mycore_logo_small_invert.png"
+          title="{$mcr_version}"
+          alt="powered by MyCoRe" />
       </a>
     </div>
   </xsl:template>

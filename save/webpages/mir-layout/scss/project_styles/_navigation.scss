@@ -140,7 +140,7 @@
 .internal_links {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .lde-nav-tabs--light {
@@ -204,6 +204,9 @@
 // Medium devices (tablets) and below: <= 992px
 @include media-breakpoint-down(md) {
   // add/overwrite styles for responsive level md and lower
+  .internal_links {
+    justify-content: flex-start;
+  }
 }
 
 // Small devices (landscape phones) and below: <= 768px
@@ -263,4 +266,7 @@
 // Extra small devices (portrait phones): <= 576px
 @include media-breakpoint-down(xs) {
   // add/overwrite styles for responsive level xs
+  .internal_links {
+    justify-content: center;
+  }
 }
