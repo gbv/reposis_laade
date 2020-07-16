@@ -13,138 +13,154 @@
 >
   <xsl:import href="xslImport:modsmeta:metadata/laade-track-list.xsl" />
   <xsl:template match="/">
-    <!-- check if sound and cover derivate exists -->
-    <xsl:if test="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound'] and
-      mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='cover']">
 
+
+    <!-- cover derivate exists -->
+    <xsl:if test="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='cover']">
       <xsl:variable name="cover_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/@xlink:href" />
-      <xsl:variable name="sound_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
-
       <xsl:choose>
-        <xsl:when test="key('rights', $cover_derivid)/@read and key('rights', $sound_derivid)/@read">
-
-          <xsl:variable name="cover_der_uri" select="concat('ifs:',$cover_derivid,'/')" />
-          <xsl:variable name="cover_der_xml" select="document($cover_der_uri)/mcr_directory/children" />
-          <xsl:variable name="sound_der_uri" select="concat('ifs:',$sound_derivid,'/')" />
-          <xsl:variable name="sound_der_xml" select="document($sound_der_uri)/mcr_directory/children" />
-
-          <xsl:variable name="cover_front_filename">
+        <!-- user has cover access -->
+        <xsl:when test="key('rights', $cover_derivid)/@read">
+          <!-- sound exists -->
+          <xsl:if test="mycoreobject/structure/derobjects/derobject/classification[@classid='derivate_types'][@categid='sound']">
+            <xsl:variable name="sound_derivid" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
+            <!-- user has sound access -->
             <xsl:choose>
-              <xsl:when test="$cover_der_xml/child[contains(name, '001_cov')]/name">
-                <xsl:value-of select="$cover_der_xml/child[contains(name, '001_cov')]/name" />
+              <xsl:when test="key('rights', $sound_derivid)/@read">
+
+                <xsl:variable name="cover_der_uri" select="concat('ifs:',$cover_derivid,'/')" />
+                <xsl:variable name="cover_der_xml" select="document($cover_der_uri)/mcr_directory/children" />
+                <xsl:variable name="sound_der_uri" select="concat('ifs:',$sound_derivid,'/')" />
+                <xsl:variable name="sound_der_xml" select="document($sound_der_uri)/mcr_directory/children" />
+
+                <xsl:variable name="cover_front_filename">
+                  <xsl:choose>
+                    <xsl:when test="$cover_der_xml/child[contains(name, '001_cov')]/name">
+                      <xsl:value-of select="$cover_der_xml/child[contains(name, '001_cov')]/name" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/maindoc"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:variable>
+                <xsl:variable name="cover_back_filename" select="$cover_der_xml/child[contains(name, '002_cov')]/name" />
+
+                <xsl:variable name="sound_ziplink" select="concat($ServletsBaseURL,'MCRZipServlet',$JSessionID,'?id=',$sound_derivid)" />
+
+
+                <div id="laade-track-list">
+
+                  <div class="row lde-tracks">
+                    <div class="col-md-6">
+                      <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_front_filename}" class="lde-currend-side-cover">
+                        <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_front_filename}" class="img-fluid" alt="..." />
+                      </a>
+                      <xsl:if test="$cover_back_filename">
+                        <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_back_filename}" class="lde-currend-side-cover d-none">
+                          <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_back_filename}" class="img-fluid" alt="..." />
+                        </a>
+                        <a href="#" class="lde-js-coverToggle mt-1 d-block">
+                          <i class="fas fa-reply"></i>
+                          Cover wenden
+                        </a>
+                      </xsl:if>
+                    </div>
+                    <div class="col-md-6 mt-5 mt-md-0">
+
+                      <ul class="nav nav-tabs lde-nav-tabs--light" id="lde-track-lists-nav" role="tablist">
+                        <xsl:choose>
+                          <xsl:when test="$sound_der_xml/child[contains(name,'_B_')]">
+                            <li class="nav-item">
+                              <a class="nav-link active" id="lde-side-a-tab" data-toggle="tab" href="#lde-side-a" role="tab" aria-controls="side-a" aria-selected="true">Seite A</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="lde-side-b-tab" data-toggle="tab" href="#lde-side-b" role="tab" aria-controls="side-b" aria-selected="false">Seite B</a>
+                            </li>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <li class="nav-item">
+                              <a class="nav-link" id="lde-side-cd-tab" data-toggle="tab" href="#lde-cd" role="tab" aria-controls="side-cd" aria-selected="false">Titel</a>
+                            </li>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                        <li class="nav-item ml-auto">
+                          <xsl:apply-templates select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]" mode="laadeDerivateActions">
+                            <xsl:with-param name="deriv" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
+                            <xsl:with-param name="parentObjID" select="mycoreobject/@ID" />
+                          </xsl:apply-templates>
+                        </li>
+                      </ul>
+
+                      <div class="tab-content" id="lde-track-lists">
+
+                        <xsl:choose>
+                          <xsl:when test="$sound_der_xml/child[contains(name,'_B_')]">
+
+                            <div class="tab-pane fade show active" id="lde-side-a" role="tabpanel" aria-labelledby="Seite A">
+
+                              <xsl:call-template name="generateTrackList">
+                                <xsl:with-param name="sound_file_condition" select="'_A_'"/>
+                                <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
+                                <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
+                              </xsl:call-template>
+
+                            </div>
+                            <div class="tab-pane fade" id="lde-side-b" role="tabpanel" aria-labelledby="Seite B">
+
+                              <xsl:call-template name="generateTrackList">
+                                <xsl:with-param name="sound_file_condition" select="'_B_'"/>
+                                <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
+                                <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
+                              </xsl:call-template>
+
+                            </div>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <div class="tab-pane fade show active" id="lde-cd" role="tabpanel" aria-labelledby="Titel">
+
+                              <xsl:call-template name="generateTrackList">
+                                <xsl:with-param name="sound_file_condition" select="'.'"/>
+                                <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
+                                <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
+                              </xsl:call-template>
+
+                            </div>
+                          </xsl:otherwise>
+                        </xsl:choose>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
               </xsl:when>
+              <!-- user has no sound access -->
               <xsl:otherwise>
-                <xsl:value-of select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='cover']]/maindoc"/>
+                <xsl:comment>
+                  <xsl:value-of select="'tracklist hidden: no &quot;sound&quot; permission'" />
+                </xsl:comment>
               </xsl:otherwise>
             </xsl:choose>
-          </xsl:variable>
-          <xsl:variable name="cover_back_filename" select="$cover_der_xml/child[contains(name, '002_cov')]/name" />
-
-          <xsl:variable name="sound_ziplink" select="concat($ServletsBaseURL,'MCRZipServlet',$JSessionID,'?id=',$sound_derivid)" />
-
-
-          <div id="laade-track-list">
-
-            <div class="row lde-tracks">
-              <div class="col-md-6">
-                <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_front_filename}" class="lde-currend-side-cover">
-                  <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_front_filename}" class="img-fluid" alt="..." />
-                </a>
-                <xsl:if test="$cover_back_filename">
-                  <a href="{$WebApplicationBaseURL}rsc/viewer/{$cover_derivid}/{$cover_back_filename}" class="lde-currend-side-cover d-none">
-                    <img src="{$ServletsBaseURL}MCRTileCombineServlet/MID/{$cover_derivid}/{$cover_back_filename}" class="img-fluid" alt="..." />
-                  </a>
-                  <a href="#" class="lde-js-coverToggle mt-1 d-block">
-                    <i class="fas fa-reply"></i>
-                    Cover wenden
-                  </a>
-                </xsl:if>
-              </div>
-              <div class="col-md-6 mt-5 mt-md-0">
-
-                <ul class="nav nav-tabs lde-nav-tabs--light" id="lde-track-lists-nav" role="tablist">
-                  <xsl:choose>
-                    <xsl:when test="$sound_der_xml/child[contains(name,'_B_')]">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="lde-side-a-tab" data-toggle="tab" href="#lde-side-a" role="tab" aria-controls="side-a" aria-selected="true">Seite A</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="lde-side-b-tab" data-toggle="tab" href="#lde-side-b" role="tab" aria-controls="side-b" aria-selected="false">Seite B</a>
-                      </li>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <li class="nav-item">
-                        <a class="nav-link" id="lde-side-cd-tab" data-toggle="tab" href="#lde-cd" role="tab" aria-controls="side-cd" aria-selected="false">Titel</a>
-                      </li>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                  <li class="nav-item ml-auto">
-                    <xsl:apply-templates select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]" mode="laadeDerivateActions">
-                      <xsl:with-param name="deriv" select="mycoreobject/structure/derobjects/derobject[classification[@classid='derivate_types'][@categid='sound']]/@xlink:href" />
-                      <xsl:with-param name="parentObjID" select="mycoreobject/@ID" />
-                    </xsl:apply-templates>
-                  </li>
-                </ul>
-
-                <div class="tab-content" id="lde-track-lists">
-
-                  <xsl:choose>
-                    <xsl:when test="$sound_der_xml/child[contains(name,'_B_')]">
-
-                      <div class="tab-pane fade show active" id="lde-side-a" role="tabpanel" aria-labelledby="Seite A">
-
-                        <xsl:call-template name="generateTrackList">
-                          <xsl:with-param name="sound_file_condition" select="'_A_'"/>
-                          <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
-                          <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
-                        </xsl:call-template>
-
-                      </div>
-                      <div class="tab-pane fade" id="lde-side-b" role="tabpanel" aria-labelledby="Seite B">
-
-                        <xsl:call-template name="generateTrackList">
-                          <xsl:with-param name="sound_file_condition" select="'_B_'"/>
-                          <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
-                          <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
-                        </xsl:call-template>
-
-                      </div>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <div class="tab-pane fade show active" id="lde-cd" role="tabpanel" aria-labelledby="Titel">
-
-                        <xsl:call-template name="generateTrackList">
-                          <xsl:with-param name="sound_file_condition" select="'.'"/>
-                          <xsl:with-param name="sound_der_xml" select="$sound_der_xml"/>
-                          <xsl:with-param name="sound_derivid" select="$sound_derivid"/>
-                        </xsl:call-template>
-
-                      </div>
-                    </xsl:otherwise>
-                  </xsl:choose>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
+          </xsl:if>
+          <!-- sound not exists, nothing happen -->
         </xsl:when>
+        <!-- user has no cover access -->
         <xsl:otherwise>
           <xsl:comment>
-            <xsl:value-of select="'mir-collapse-files: no &quot;view&quot; permission'" />
+            <xsl:value-of select="'tracklist hidden: no &quot;cover&quot; permission'" />
           </xsl:comment>
+          <!-- just show the cover and a access hint -->
           <xsl:variable name="object_id" select="mycoreobject/@ID" />
           <div id="laade-track-list">
             <div class="row lde-tracks mb-5">
               <div class="col-md-6">
                 <a href="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="lde-currend-side-cover">
-                  <img src="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="img-fluid" alt="cover" />
+                  <img src="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="img-fluid" alt="Album cover" />
                 </a>
               </div>
               <div class="col-md-6 mt-5 mt-md-0">
                 <p>
-                  Sie haben nicht die notwendigen Rechte auf die Digitalisate zuzugreifen.
-                  Bei Interesse wenden Sie sich bitte an die Sammlungsleitung unter:<br />
+                  <xsl:value-of select="i18n:translate('lde.no-derivat.permission')" /><br />
                   <a href="mailto:cwm_mund@uni-hildesheim.de">cwm_mund@uni-hildesheim.de</a>
                 </p>
               </div>
@@ -153,6 +169,8 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
+    <!-- cover not exists, nothing happen -->
+
     <xsl:apply-imports />
   </xsl:template>
 
