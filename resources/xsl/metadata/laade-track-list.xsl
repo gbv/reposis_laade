@@ -133,6 +133,23 @@
           <xsl:comment>
             <xsl:value-of select="'mir-collapse-files: no &quot;view&quot; permission'" />
           </xsl:comment>
+          <xsl:variable name="object_id" select="mycoreobject/@ID" />
+          <div id="laade-track-list">
+            <div class="row lde-tracks mb-5">
+              <div class="col-md-6">
+                <a href="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="lde-currend-side-cover">
+                  <img src="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="img-fluid" alt="cover" />
+                </a>
+              </div>
+              <div class="col-md-6 mt-5 mt-md-0">
+                <p>
+                  Sie haben nicht die notwendigen Rechte auf die Digitalisate zuzugreifen.
+                  Bei Interesse wenden Sie sich bitte an die Sammlungsleitung unter:<br />
+                  <a href="mailto:cwm_mund@uni-hildesheim.de">cwm_mund@uni-hildesheim.de</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
