@@ -460,14 +460,14 @@
                       <xsl:when test="acl:checkPermissionForReadingDerivate($derivid)">
                         <a class="hit_option hit_download" href="{$viewerLink}" title="{$mods-genre-i18n}">
                           <div class="hit_icon"
-                            style="background-image: url('{$WebApplicationBaseURL}api/iiif/image/v2/thumbnail/{$object_id}/full/!100,100/0/color.jpg');"
+                            style="background-image: url('{$WebApplicationBaseURL}api/iiif/image/v2/thumbnail/{$identifier}/full/!100,100/0/color.jpg');"
                           >
                           </div>
                         </a>
                       </xsl:when>
                       <xsl:otherwise>
                         <div class="hit_icon"
-                          style="background-image: url('{$WebApplicationBaseURL}api/iiif/image/v2/thumbnail/{$object_id}/full/!100,100/0/color.jpg');"
+                          style="background-image: url('{$WebApplicationBaseURL}api/iiif/image/v2/thumbnail/{$identifier}/full/!100,100/0/color.jpg');"
                         >
                         </div>
                       </xsl:otherwise>
