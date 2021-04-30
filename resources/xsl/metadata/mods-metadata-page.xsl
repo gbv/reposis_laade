@@ -4,7 +4,7 @@
 >
   <xsl:include href="layout-utils.xsl" />
 
-  <xsl:param name="MIR.OAS" select="'hide'" />
+  <xsl:param name="MIR.ePuSta" select="'hide'" />
 
   <xsl:template match="/site">
     <xsl:copy>
