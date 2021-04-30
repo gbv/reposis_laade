@@ -154,8 +154,8 @@
           <div id="laade-track-list">
             <div class="row lde-tracks mb-5">
               <div class="col-md-6">
-                <a href="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="lde-currend-side-cover">
-                  <img src="{$WebApplicationBaseURL}api/iiif/v2/image/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="img-fluid" alt="Album cover" />
+                <a href="{$WebApplicationBaseURL}api/iiif/image/v2/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="lde-currend-side-cover">
+                  <img src="{$WebApplicationBaseURL}api/iiif/image/v2/thumbnail/{$object_id}/full/!1000,1000/0/color.jpg" class="img-fluid" alt="Album cover" />
                 </a>
               </div>
               <div class="col-md-6 mt-5 mt-md-0">

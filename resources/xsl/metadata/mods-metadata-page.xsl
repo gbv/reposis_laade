@@ -77,36 +77,27 @@
         </div>
         <div class="col-lg-4">
 
-          <xsl:comment>cites</xsl:comment>
+<!-- cites -->
           <xsl:if test="div[@id='mir-citation']">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  <xsl:value-of select="i18n:translate('metaData.quote')" /></h3>
+                  <xsl:value-of select="i18n:translate('mir.metaData.panel.heading.mir-citation')" /></h3>
               </div>
               <div class="card-body">
                 <xsl:apply-templates select="div[@id='mir-citation']" mode="copyContent" />
               </div>
             </div>
           </xsl:if>
-          <xsl:comment>OAS statistics</xsl:comment>
-          <xsl:if test="$MIR.OAS = 'show' and div[@id='mir-oastatistics']">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <xsl:value-of select="i18n:translate('mir.oas.panelheading')" />
-                </h3>
-              </div>
-              <div class="card-body" id="mir_oas">
-                <xsl:apply-templates select="div[@id='mir-oastatistics']" mode="copyContent" />
-              </div>
-            </div>
+<!-- ePuSta -->
+          <xsl:if test="$MIR.ePuSta = 'show' and div[@id='mir-epusta']">
+            <xsl:apply-templates select="div[@id='mir-epusta']" mode="copyContent" />
           </xsl:if>
-          <xsl:comment>rights</xsl:comment>
+<!-- rights -->
           <xsl:if test="div[@id='mir-access-rights']">
             <div id="mir_access_rights_panel" class="card">
               <div class="card-header">
-                <h3 class="card-title"><xsl:value-of select="i18n:translate('metaData.rights')" /></h3>
+                <h3 class="card-title"><xsl:value-of select="i18n:translate('mir.metaData.panel.heading.mir-access-rights')" /></h3>
               </div>
               <div class="card-body">
 
@@ -115,11 +106,11 @@
               </div>
             </div>
           </xsl:if>
-          <xsl:comment>export</xsl:comment>
+<!-- export -->
           <xsl:if test="div[@id='mir-export']">
             <div id="mir_export_panel" class="card">
               <div class="card-header">
-                <h3 class="card-title"><xsl:value-of select="i18n:translate('metaData.export')" /></h3>
+                <h3 class="card-title"><xsl:value-of select="i18n:translate('mir.metaData.panel.heading.mir-export')" /></h3>
               </div>
               <div class="card-body">
 
@@ -128,7 +119,7 @@
               </div>
             </div>
           </xsl:if>
-          <xsl:comment>system</xsl:comment>
+<!-- system -->
           <xsl:if test="not(mcrxsl:isCurrentUserGuestUser()) and @read">
             <div id="mir_admindata_panel" class="card system">
               <div class="card-header">
