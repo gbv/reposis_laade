@@ -1,0 +1,45 @@
+// **************************************************
+//  sass master
+//  - includes all needed styles
+// **************************************************
+
+//  variables
+// -------------------------
+//  - bootstrap and bootswatch variables are all defined with the default flag
+//  - a default is only used, when a variable with this name does not exist yet
+//  - but the last defined variable with a default flag will be used
+//  - that's why we import the project variables first
+//  - but import the bootswatch modifications after the bootstrap settings
+
+@import "project_styles/variables";                // project variables
+@import "common/variables";                         // mir variables
+@import  "../assets/bootswatch/flatly/variables";   // bootswatch variables
+
+//  styles
+// -------------------------
+//  now the usual rule is valid: the last setting wins
+
+//  basic settings
+@import  "../assets/bootstrap/bootstrap";           // bootstrap variables and styles
+@import  "../assets/bootswatch/flatly/bootswatch";  // bootswatch styles
+@import "flatmir/layout";                           // mir styles
+
+//  project styles
+@import "project_styles/fonts";      // fonts import
+@import "project_styles/typo";       // typography settings
+
+@import "project_styles/layout";     // layout elements
+@import "project_styles/header";     // all about the header
+@import "project_styles/footer";     // all about the footer
+
+@import "project_styles/navigation"; // all menus
+
+@import "project_styles/buttons";    // buttons and links looks like buttons
+@import "project_styles/cards";      // card section and its content
+@import "project_styles/lists";      // list settings
+@import "project_styles/forms";      // form settings
+
+@import "project_styles/common";     // stlyes without a own file
+
+@import "project_styles/section-home";       // settings for homepage only
+@import "project_styles/section-metadata";  // settings for metadata view only
