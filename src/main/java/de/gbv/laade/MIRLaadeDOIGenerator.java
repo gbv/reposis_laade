@@ -1,4 +1,4 @@
-package org.mycore.mir.laade;
+package de.gbv.laade;
 
 import org.jdom2.Element;
 import org.mycore.datamodel.metadata.MCRBase;

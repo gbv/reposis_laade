@@ -1,4 +1,4 @@
-package org.mycore.mir.laade;
+package de.gbv.laade;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
