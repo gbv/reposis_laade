@@ -32,7 +32,6 @@
   <groupId>de.gbv.laade</groupId>
   <artifactId>reposis_laade</artifactId>
   <version>2020.06-SNAPSHOT</version>
-  <packaging>jar</packaging>
 
   <properties>
     <MCR.AppName>laade</MCR.AppName>
@@ -79,11 +78,10 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <archive>
             <manifestEntries>
@@ -94,7 +92,7 @@
             </manifestEntries>
           </archive>
         </configuration>
-      </plugin>
+          </plugin>
     </plugins>
   </build>
 
