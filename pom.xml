@@ -147,6 +147,10 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>net.sf.saxon</groupId>
+        <artifactId>Saxon-HE</artifactId>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
