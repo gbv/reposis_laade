@@ -12,9 +12,5 @@
             <label xml:lang="en" text="Sound" />
             <label xml:lang="de" text="Tonaufnahme" />
         </category>
-        <category ID="content">
-            <label xml:lang="en" text="c" />
-            <label xml:lang="de" text="c" />
-        </category>
     </categories>
 </mycoreclass>
